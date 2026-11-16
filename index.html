@@ -1,16 +1,16 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Fitness Hub</title><style>
-:root{font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;color:#20302b;background:#f4f6f1}*{box-sizing:border-box}body{margin:0}header{background:#183f34;color:white;padding:30px max(20px,calc((100vw - 1100px)/2))}header h1{margin:5px 0;font-size:clamp(28px,5vw,42px)}header p{color:#d3e7dc;margin:0}.wrap{max-width:1100px;margin:auto;padding:22px 18px 70px}.stats,.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.stat,.panel{background:white;border:1px solid #dce5dc;border-radius:16px;padding:18px;box-shadow:0 3px 14px #1e49340a}.stat strong{display:block;font-size:24px;color:#205b48}.muted,small{color:#64766b}nav{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0}button,.button{cursor:pointer;border:1px solid #b9d0c1;border-radius:10px;background:white;padding:9px 13px;color:#235743;font-weight:650}button:hover{background:#e9f3ec}.primary{background:#23664d;color:white;border-color:#23664d}.primary:hover{background:#19533d}.danger{color:#a02f34;border-color:#e8c6c6}.panel{margin:16px 0}h2{margin:0 0 12px;font-size:22px}h3{margin:14px 0 7px;font-size:16px}p{line-height:1.5}table{border-collapse:collapse;width:100%}td,th{padding:11px 8px;border-bottom:1px solid #e6ece7;text-align:left;vertical-align:top}th{color:#547064;font-size:13px}input,select,textarea{font:inherit;border:1px solid #cbd8ce;border-radius:8px;padding:8px;background:white;color:#20302b}input[type=checkbox]{width:18px;height:18px;accent-color:#276c50}input[type=number]{width:90px}textarea{width:100%;min-height:85px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}.meal{background:#f5f9f5;border-radius:12px;padding:12px;margin:8px 0}.meal label{display:block;color:#567165;font-size:12px;font-weight:700;text-transform:uppercase}.meal textarea{margin-top:5px;min-height:62px}.daybuttons{display:flex;flex-wrap:nowrap;gap:6px;margin:10px 0;overflow-x:auto;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;padding-bottom:6px;scrollbar-width:thin}.daybuttons button{flex:0 0 auto;white-space:nowrap;min-width:48px;text-align:center}@media(max-width:600px){.daybuttons{margin-right:-14px;padding-right:14px}.daybuttons button{padding:10px 12px}}.daybuttons button.active{background:#23664d;color:white}.row{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.grocery{display:flex;align-items:center;gap:9px;padding:8px 0;border-bottom:1px solid #eef1ed}.grocery span{flex:1}.grocery.checked span{text-decoration:line-through;color:#8a968d}.grocery input.itemedit{flex:1;min-width:70px}.grocery .qty{width:105px}.progress{height:9px;background:#e4ede6;border-radius:9px;overflow:hidden}.progress>div{height:100%;background:#2b8060;transition:width .2s}.tag{font-size:12px;background:#e4f0e7;border-radius:30px;padding:4px 9px;color:#32634c}.notice{background:#edf5ed;border-left:4px solid #43896a;padding:12px;border-radius:7px}.hidden{display:none!important}@media(max-width:700px){.stats{grid-template-columns:1fr 1fr}.grid2,.cards{grid-template-columns:1fr}.stat strong{font-size:20px}td,th{font-size:13px}header{padding:26px 20px}}
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Fitness Hub</title><script>(function(){try{const t=localStorage.getItem('fitness-hub-theme-v2');document.documentElement.dataset.theme=['slate','ocean','indigo','clay','forest','midnight'].includes(t)?t:'slate'}catch(e){document.documentElement.dataset.theme='slate'}})();</script><style>
+:root{font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;color:var(--ink);background:var(--page)}*{box-sizing:border-box}body{margin:0}header{background:var(--hero);color:white;padding:30px max(20px,calc((100vw - 1100px)/2))}header h1{margin:5px 0;font-size:clamp(28px,5vw,42px)}header p{color:var(--hero-subtitle);margin:0}.wrap{max-width:1100px;margin:auto;padding:22px 18px 70px}.stats,.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.stat,.panel{background:white;border:1px solid var(--border);border-radius:16px;padding:18px;box-shadow:0 3px 14px var(--shadow)}.stat strong{display:block;font-size:24px;color:var(--accent)}.muted,small{color:var(--muted)}nav{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0}button,.button{cursor:pointer;border:1px solid var(--accent-border);border-radius:10px;background:white;padding:9px 13px;color:var(--accent-text);font-weight:650}button:hover{background:var(--accent-soft)}.primary{background:var(--accent);color:white;border-color:var(--accent)}.primary:hover{background:var(--accent-hover)}.danger{color:var(--danger);border-color:var(--danger-border)}.panel{margin:16px 0}h2{margin:0 0 12px;font-size:22px}h3{margin:14px 0 7px;font-size:16px}p{line-height:1.5}table{border-collapse:collapse;width:100%}td,th{padding:11px 8px;border-bottom:1px solid var(--border);text-align:left;vertical-align:top}th{color:var(--muted);font-size:13px}input,select,textarea{font:inherit;border:1px solid var(--input-border);border-radius:8px;padding:8px;background:white;color:var(--ink)}input[type=checkbox]{width:18px;height:18px;accent-color:var(--accent)}input[type=number]{width:90px}textarea{width:100%;min-height:85px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}.meal{background:var(--subtle-surface);border-radius:12px;padding:12px;margin:8px 0}.meal label{display:block;color:var(--muted);font-size:12px;font-weight:700;text-transform:uppercase}.meal textarea{margin-top:5px;min-height:62px}.daybuttons{display:flex;flex-wrap:nowrap;gap:6px;margin:10px 0;overflow-x:auto;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;padding-bottom:6px;scrollbar-width:thin}.daybuttons button{flex:0 0 auto;white-space:nowrap;min-width:48px;text-align:center}@media(max-width:600px){.daybuttons{margin-right:-14px;padding-right:14px}.daybuttons button{padding:10px 12px}}.daybuttons button.active{background:var(--accent);color:white}.row{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.grocery{display:flex;align-items:center;gap:9px;padding:8px 0;border-bottom:1px solid var(--border-soft)}.grocery span{flex:1}.grocery.checked span{text-decoration:line-through;color:var(--muted)}.grocery input.itemedit{flex:1;min-width:70px}.grocery .qty{width:105px}.progress{height:9px;background:var(--accent-soft);border-radius:9px;overflow:hidden}.progress>div{height:100%;background:var(--accent);transition:width .2s}.tag{font-size:12px;background:var(--accent-soft);border-radius:30px;padding:4px 9px;color:var(--accent-text)}.notice{background:var(--accent-soft);border-left:4px solid var(--accent);padding:12px;border-radius:7px}.hidden{display:none!important}@media(max-width:700px){.stats{grid-template-columns:1fr 1fr}.grid2,.cards{grid-template-columns:1fr}.stat strong{font-size:20px}td,th{font-size:13px}header{padding:26px 20px}}
 @media print{nav,.no-print,button{display:none!important}.panel{break-inside:avoid}body{background:white}}
-.quick-add{display:grid;grid-template-columns:minmax(150px,2fr) minmax(95px,1fr) minmax(140px,1fr) auto;gap:8px;margin:16px 0}.quick-add input,.quick-add select{width:100%;min-width:0}.grocery-toolbar{margin:12px 0;padding:10px 0;border-bottom:1px solid #e5ebe5}.grocery-toolbar label{display:flex;align-items:center;gap:8px;font-size:14px}.grocery-group{margin:14px 0}.grocery-group h3{display:flex;align-items:center;justify-content:space-between;margin:0;padding:11px 12px;background:#f0f5f0;border-radius:10px}.grocery-item{display:flex;align-items:center;gap:10px;padding:10px 6px;border-bottom:1px solid #edf0eb}.grocery-item .glabel{flex:1;min-width:0}.grocery-item .glabel strong{display:block;font-size:14px}.grocery-item .glabel small{display:block}.grocery-item.checked .glabel{text-decoration:line-through;opacity:.55}.grocery-item .edit-fields{display:flex;flex:1;gap:6px;flex-wrap:wrap}.grocery-item .edit-fields input{min-width:90px;flex:1}.grocery-item button{padding:6px 9px;font-size:12px}.grocery-item .edit-fields select{min-width:125px;flex:1}@media(max-width:700px){.quick-add{grid-template-columns:1fr 1fr}.quick-add #newGName{grid-column:1/-1}.quick-add button{grid-column:2}.grocery-item{gap:7px}.grocery-item .edit-fields{flex-direction:column}}
-#cloud-panel{border-color:#bdd6c8}#uid-value{overflow-wrap:anywhere}#planner-content.locked{opacity:.5;pointer-events:none;user-select:none}#sync-warning{font-size:13px}.sync-good{color:#166d46!important}.sync-error{color:#a02f34!important}
+.quick-add{display:grid;grid-template-columns:minmax(150px,2fr) minmax(95px,1fr) minmax(140px,1fr) auto;gap:8px;margin:16px 0}.quick-add input,.quick-add select{width:100%;min-width:0}.grocery-toolbar{margin:12px 0;padding:10px 0;border-bottom:1px solid var(--border)}.grocery-toolbar label{display:flex;align-items:center;gap:8px;font-size:14px}.grocery-group{margin:14px 0}.grocery-group h3{display:flex;align-items:center;justify-content:space-between;margin:0;padding:11px 12px;background:var(--subtle-surface);border-radius:10px}.grocery-item{display:flex;align-items:center;gap:10px;padding:10px 6px;border-bottom:1px solid var(--border-soft)}.grocery-item .glabel{flex:1;min-width:0}.grocery-item .glabel strong{display:block;font-size:14px}.grocery-item .glabel small{display:block}.grocery-item.checked .glabel{text-decoration:line-through;opacity:.55}.grocery-item .edit-fields{display:flex;flex:1;gap:6px;flex-wrap:wrap}.grocery-item .edit-fields input{min-width:90px;flex:1}.grocery-item button{padding:6px 9px;font-size:12px}.grocery-item .edit-fields select{min-width:125px;flex:1}@media(max-width:700px){.quick-add{grid-template-columns:1fr 1fr}.quick-add #newGName{grid-column:1/-1}.quick-add button{grid-column:2}.grocery-item{gap:7px}.grocery-item .edit-fields{flex-direction:column}}
+#cloud-panel{border-color:var(--accent-border)}#uid-value{overflow-wrap:anywhere}#planner-content.locked{opacity:.5;pointer-events:none;user-select:none}#sync-warning{font-size:13px}.sync-good{color:var(--positive-text)!important}.sync-error{color:var(--danger)!important}
 /* Compact cloud status bar */
-#cloud-panel{padding:12px 16px;margin-bottom:14px}#cloud-panel .sync-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}#cloud-panel .sync-heading{display:flex;align-items:center;gap:10px;min-width:0}#cloud-panel .sync-heading strong{font-size:14px}#cloud-panel .sync-heading p{margin:2px 0 0;font-size:12px}#cloud-panel .sync-dot{height:9px;width:9px;flex:0 0 9px;border-radius:50%;background:#d8a441}#cloud-panel:has(.sync-good) .sync-dot{background:#25965a}#cloud-panel:has(.sync-error) .sync-dot{background:#cc4c4c}#cloud-panel .sync-actions{display:flex;align-items:center;gap:8px}#cloud-panel .sync-actions button{padding:7px 12px;font-size:12px}#cloud-panel #account-details{position:relative}#cloud-panel #account-details summary{cursor:pointer;font-size:12px;padding:7px 8px;list-style:none}#cloud-panel #account-details summary::after{content:' ▾'}#cloud-panel #account-details[open] summary::after{content:' ▴'}#cloud-panel .sync-details{position:absolute;right:0;top:100%;z-index:5;background:white;border:1px solid #bdd6c8;border-radius:10px;box-shadow:0 8px 24px #0002;padding:14px;min-width:300px;max-width:min(90vw,420px)}#cloud-panel .sync-details p{font-size:12px;margin:8px 0 0}#cloud-panel .sync-uid{display:flex;gap:7px;align-items:center;flex-wrap:wrap;font-size:12px}#cloud-panel .sync-uid code{overflow-wrap:anywhere;font-size:11px}#cloud-panel #import-panel{margin-top:10px}#cloud-panel #import-panel p{font-size:12px;margin:4px 0 8px}#cloud-panel #sync-warning{font-size:12px;margin:8px 0 0}#cloud-panel:has(.sync-good) #sync-warning{display:none}@media(max-width:600px){#cloud-panel{padding:10px 12px}#cloud-panel .sync-bar{gap:8px}#cloud-panel .sync-details{right:-65px;min-width:260px}}
+#cloud-panel{padding:12px 16px;margin-bottom:14px}#cloud-panel .sync-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}#cloud-panel .sync-heading{display:flex;align-items:center;gap:10px;min-width:0}#cloud-panel .sync-heading strong{font-size:14px}#cloud-panel .sync-heading p{margin:2px 0 0;font-size:12px}#cloud-panel .sync-dot{height:9px;width:9px;flex:0 0 9px;border-radius:50%;background:var(--warning)}#cloud-panel:has(.sync-good) .sync-dot{background:var(--positive)}#cloud-panel:has(.sync-error) .sync-dot{background:var(--danger)}#cloud-panel .sync-actions{display:flex;align-items:center;gap:8px}#cloud-panel .sync-actions button{padding:7px 12px;font-size:12px}#cloud-panel #account-details{position:relative}#cloud-panel #account-details summary{cursor:pointer;font-size:12px;padding:7px 8px;list-style:none}#cloud-panel #account-details summary::after{content:' ▾'}#cloud-panel #account-details[open] summary::after{content:' ▴'}#cloud-panel .sync-details{position:absolute;right:0;top:100%;z-index:5;background:white;border:1px solid var(--accent-border);border-radius:10px;box-shadow:0 8px 24px var(--shadow);padding:14px;min-width:300px;max-width:min(90vw,420px)}#cloud-panel .sync-details p{font-size:12px;margin:8px 0 0}#cloud-panel .sync-uid{display:flex;gap:7px;align-items:center;flex-wrap:wrap;font-size:12px}#cloud-panel .sync-uid code{overflow-wrap:anywhere;font-size:11px}#cloud-panel #import-panel{margin-top:10px}#cloud-panel #import-panel p{font-size:12px;margin:4px 0 8px}#cloud-panel #sync-warning{font-size:12px;margin:8px 0 0}#cloud-panel:has(.sync-good) #sync-warning{display:none}@media(max-width:600px){#cloud-panel{padding:10px 12px}#cloud-panel .sync-bar{gap:8px}#cloud-panel .sync-details{right:-65px;min-width:260px}}
 
 /* Tabbed layout and expandable reference sections */
-.tab-panel[hidden]{display:none!important}.tabs{display:flex;gap:7px;overflow-x:auto;flex-wrap:nowrap;margin:12px 0 8px;padding-bottom:5px;scrollbar-width:thin}.tabs button{white-space:nowrap;flex:1;min-width:max-content;padding:11px 15px;border-radius:10px}.tabs button.active{background:#23664d;color:#fff;border-color:#23664d}.tab-panel{margin-top:10px}.subsection{border:1px solid #dce5dc;border-radius:12px;margin:14px 0;background:#fafcf9}.subsection summary{cursor:pointer;font-weight:700;padding:13px 15px}.subsection[open] summary{border-bottom:1px solid #e5ebe5}.subsection>.grid2,.subsection>.cards{padding:10px 14px}.subsection .meal{margin:3px 0}@media(max-width:600px){header{padding:19px 18px}header h1{font-size:29px}.wrap{padding:12px 12px 60px}.tabs button{font-size:13px;padding:10px 12px}.panel{padding:14px}}
-.workout-controls{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}.workout-controls label{display:flex;flex-direction:column;gap:5px;font-size:12px;font-weight:700;color:#567165}.workout-controls input,.workout-controls select{width:100%;min-width:0}.workout-block{margin-top:20px;color:#235743;border-bottom:1px solid #e0e9e1;padding-bottom:7px}.workout-card{background:#f5f9f5;border:1px solid #e0e9e1;border-radius:12px;padding:12px;margin:10px 0}.workout-card .row{align-items:start}.workout-card .row small{white-space:nowrap}.workout-set-list{margin-top:9px}.workout-set{display:grid;grid-template-columns:48px minmax(0,1fr) minmax(0,1fr) 75px;align-items:center;gap:7px;margin:7px 0}.workout-set input[type=text]{width:100%;min-width:0}.workout-set span{font-size:12px;color:#567165}.workout-set:has(input[type=checkbox]:checked){background:#e6f5eb;border-radius:7px;padding:3px}.done-set{display:flex;align-items:center;gap:5px;font-size:12px}.workout-edit{display:grid;grid-template-columns:1.5fr repeat(4,1fr) auto;gap:7px;align-items:end;border-bottom:1px solid #e5ebe5;padding:10px 0}.workout-edit input,.workout-edit select{width:100%;min-width:0}.workout-edit label{font-size:11px;color:#567165}.history-row{display:flex;align-items:center;justify-content:space-between;text-align:left;width:100%;margin:8px 0;padding:13px}.history-row small{display:block;margin-top:4px;font-weight:400}@media(max-width:600px){.workout-edit{grid-template-columns:repeat(2,minmax(0,1fr))}.workout-edit>input{grid-column:1/-1}.workout-set{grid-template-columns:40px minmax(0,1fr) minmax(0,1fr) 67px;gap:5px}.workout-set input{padding:8px 5px;font-size:13px}.workout-card .row small{white-space:normal}.workout-controls{gap:7px}} 
+.tab-panel[hidden]{display:none!important}.tabs{display:flex;gap:7px;overflow-x:auto;flex-wrap:nowrap;margin:12px 0 8px;padding-bottom:5px;scrollbar-width:thin}.tabs button{white-space:nowrap;flex:1;min-width:max-content;padding:11px 15px;border-radius:10px}.tabs button.active{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}.tab-panel{margin-top:10px}.subsection{border:1px solid var(--border);border-radius:12px;margin:14px 0;background:var(--subtle-surface)}.subsection summary{cursor:pointer;font-weight:700;padding:13px 15px}.subsection[open] summary{border-bottom:1px solid var(--border)}.subsection>.grid2,.subsection>.cards{padding:10px 14px}.subsection .meal{margin:3px 0}@media(max-width:600px){header{padding:19px 18px}header h1{font-size:29px}.wrap{padding:12px 12px 60px}.tabs button{font-size:13px;padding:10px 12px}.panel{padding:14px}}
+.workout-controls{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}.workout-controls label{display:flex;flex-direction:column;gap:5px;font-size:12px;font-weight:700;color:var(--muted)}.workout-controls input,.workout-controls select{width:100%;min-width:0}.workout-block{margin-top:20px;color:var(--accent-text);border-bottom:1px solid var(--border);padding-bottom:7px}.workout-card{background:var(--subtle-surface);border:1px solid var(--border);border-radius:12px;padding:12px;margin:10px 0}.workout-card .row{align-items:start}.workout-card .row small{white-space:nowrap}.workout-set-list{margin-top:9px}.workout-set{display:grid;grid-template-columns:48px minmax(0,1fr) minmax(0,1fr) 75px;align-items:center;gap:7px;margin:7px 0}.workout-set input[type=text]{width:100%;min-width:0}.workout-set span{font-size:12px;color:var(--muted)}.workout-set:has(input[type=checkbox]:checked){background:var(--selected-bg);border-radius:7px;padding:3px}.done-set{display:flex;align-items:center;gap:5px;font-size:12px}.workout-edit{display:grid;grid-template-columns:1.5fr repeat(4,1fr) auto;gap:7px;align-items:end;border-bottom:1px solid var(--border);padding:10px 0}.workout-edit input,.workout-edit select{width:100%;min-width:0}.workout-edit label{font-size:11px;color:var(--muted)}.history-row{display:flex;align-items:center;justify-content:space-between;text-align:left;width:100%;margin:8px 0;padding:13px}.history-row small{display:block;margin-top:4px;font-weight:400}@media(max-width:600px){.workout-edit{grid-template-columns:repeat(2,minmax(0,1fr))}.workout-edit>input{grid-column:1/-1}.workout-set{grid-template-columns:40px minmax(0,1fr) minmax(0,1fr) 67px;gap:5px}.workout-set input{padding:8px 5px;font-size:13px}.workout-card .row small{white-space:normal}.workout-controls{gap:7px}} 
 /* Three primary areas with secondary views */
-.sub-tabs[hidden]{display:none!important}.main-tabs{margin-bottom:3px}.main-tabs button{font-size:15px}.sub-tabs{margin-top:0;padding-top:4px}.sub-tabs button{font-size:13px;padding:9px 13px}.reference-section{border-top:1px solid #e0e9e1;margin-top:16px;padding-top:8px}.reference-section>.grid2,.reference-section>.cards{margin-top:10px}.grocery-group,.workout-group{border:1px solid #dce5dc;border-radius:12px;margin:12px 0;overflow:hidden;background:white}.grocery-group>summary,.workout-group>summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;background:#f0f5f0;color:#235743;padding:13px 14px;font-weight:700}.grocery-group>summary::-webkit-details-marker,.workout-group>summary::-webkit-details-marker{display:none}.grocery-group>summary::after,.workout-group>summary::after{content:'⌄';margin-left:10px}.grocery-group:not([open])>summary::after,.workout-group:not([open])>summary::after{content:'›'}.grocery-group>summary small,.workout-group>summary small{margin-left:auto;font-weight:500}.grocery-group .grocery-item,.workout-group .workout-card{margin-left:10px;margin-right:10px}@media(max-width:600px){.main-tabs button{font-size:14px;padding:10px 11px}.sub-tabs button{font-size:12px}}
+.sub-tabs[hidden]{display:none!important}.main-tabs{margin-bottom:3px}.main-tabs button{font-size:15px}.sub-tabs{margin-top:0;padding-top:4px}.sub-tabs button{font-size:13px;padding:9px 13px}.reference-section{border-top:1px solid var(--border);margin-top:16px;padding-top:8px}.reference-section>.grid2,.reference-section>.cards{margin-top:10px}.grocery-group,.workout-group{border:1px solid var(--border);border-radius:12px;margin:12px 0;overflow:hidden;background:white}.grocery-group>summary,.workout-group>summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;background:var(--subtle-surface);color:var(--accent-text);padding:13px 14px;font-weight:700}.grocery-group>summary::-webkit-details-marker,.workout-group>summary::-webkit-details-marker{display:none}.grocery-group>summary::after,.workout-group>summary::after{content:'⌄';margin-left:10px}.grocery-group:not([open])>summary::after,.workout-group:not([open])>summary::after{content:'›'}.grocery-group>summary small,.workout-group>summary small{margin-left:auto;font-weight:500}.grocery-group .grocery-item,.workout-group .workout-card{margin-left:10px;margin-right:10px}@media(max-width:600px){.main-tabs button{font-size:14px;padding:10px 11px}.sub-tabs button{font-size:12px}}
 
 /* Mobile workout controls and paste workflow */
 .workout-import-actions{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.workout-import-actions>*{font-size:13px}.workout-controls{display:grid;grid-template-columns:1fr 1fr;gap:12px}.workout-controls label{min-width:0}.workout-controls input,.workout-controls select{width:100%;min-width:0}.workout-set{display:grid;grid-template-columns:1fr;gap:7px;align-items:center}.workout-set input[type=text]{width:100%;min-width:0}.workout-set .done-set{white-space:nowrap}#workout-paste-text{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;min-height:160px;resize:vertical}#workout-paste-panel>.row{justify-content:flex-start}#workout-paste-panel small{display:block;margin-top:8px}
@@ -18,8 +18,8 @@
 
 /* Simple, thumb-friendly per-set completion */
 .workout-set-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:8px;margin-top:12px}
-.set-check{display:flex;align-items:center;justify-content:space-between;gap:8px;text-align:left;min-height:48px;padding:11px 12px;border:1px solid #cbdccf;border-radius:10px;background:#fff;color:#235743;font-size:14px}
-.set-check .set-status{font-size:12px;color:#64766b;font-weight:500}.set-check.completed{background:#dff1e5;border-color:#389568;color:#15583c}.set-check.completed .set-status{color:#15583c;font-weight:700}
+.set-check{display:flex;align-items:center;justify-content:space-between;gap:8px;text-align:left;min-height:48px;padding:11px 12px;border:1px solid var(--accent-border);border-radius:10px;background:var(--surface);color:var(--accent-text);font-size:14px}
+.set-check .set-status{font-size:12px;color:var(--muted);font-weight:500}.set-check.completed{background:var(--selected-bg);border-color:var(--selected-border);color:var(--selected-text)}.set-check.completed .set-status{color:var(--selected-text);font-weight:700}
 .workout-import-actions{display:block}.workout-import-actions>button{width:100%;max-width:360px}
 @media(max-width:600px){.workout-set-list{grid-template-columns:repeat(2,minmax(0,1fr))}.set-check{padding:11px 9px;min-height:52px;font-size:13px}.set-check .set-status{font-size:11px}}
 
@@ -28,7 +28,7 @@
 .workout-controls input[type=date]{min-width:0;max-width:100%;font-variant-numeric:tabular-nums}
 .workout-card .row{display:flex;flex-direction:column;align-items:flex-start;gap:5px}
 .workout-card .row strong{font-size:16px;line-height:1.35;overflow-wrap:anywhere}
-.workout-card .row small{font-size:13px;line-height:1.4;color:#62776b;white-space:normal}
+.workout-card .row small{font-size:13px;line-height:1.4;color:var(--muted);white-space:normal}
 .workout-set-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:12px}
 .set-check{width:100%;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:58px;padding:9px 5px;text-align:center}
 .set-check .set-status{font-size:11px;line-height:1.25}
@@ -61,43 +61,43 @@
 #workouts{min-width:0;overflow:hidden}
 .workout-session-head{display:flex;align-items:center;justify-content:space-between;gap:10px;min-width:0;margin-bottom:12px}
 .workout-session-head>div{min-width:0}
-.session-eyebrow{font-size:10px;font-weight:800;letter-spacing:1.3px;color:#647c70;margin:0 0 5px}
+.session-eyebrow{font-size:10px;font-weight:800;letter-spacing:1.3px;color:var(--muted);margin:0 0 5px}
 #workout-heading{font-size:clamp(20px,3.9vw,27px);line-height:1.22;margin:0;overflow-wrap:anywhere}
-.workout-summary-count{white-space:nowrap;align-self:center;font-size:12px;font-weight:750;color:#23664d;background:#e7f2ea;border-radius:99px;padding:7px 11px}
+.workout-summary-count{white-space:nowrap;align-self:center;font-size:12px;font-weight:750;color:var(--accent);background:var(--accent-soft);border-radius:99px;padding:7px 11px}
 .workout-date-row{display:grid;grid-template-columns:42px minmax(0,1fr) 42px;gap:8px;align-items:stretch;width:100%;min-width:0;margin:0 0 10px}
 .workout-date-row .date-step{font-size:28px;font-weight:400;line-height:1;min-height:45px;padding:5px}
-.workout-date-picker{display:flex;position:relative;align-items:center;justify-content:center;gap:8px;min-width:0;max-width:100%;overflow:hidden;border:1px solid #b9d0c1;border-radius:10px;background:white;padding:10px 9px;color:#20302b;text-align:center;cursor:pointer;font-size:15px;font-weight:750;line-height:1.3;white-space:nowrap}
+.workout-date-picker{display:flex;position:relative;align-items:center;justify-content:center;gap:8px;min-width:0;max-width:100%;overflow:hidden;border:1px solid var(--accent-border);border-radius:10px;background:white;padding:10px 9px;color:var(--ink);text-align:center;cursor:pointer;font-size:15px;font-weight:750;line-height:1.3;white-space:nowrap}
 .workout-date-picker #workout-date-display{min-width:0;text-overflow:ellipsis;overflow:hidden}
 .workout-date-picker .date-calendar{flex:0 0 auto;font-size:16px;opacity:.65}
 .workout-date-picker input[type=date]{position:absolute;inset:0;width:100%;height:100%;max-width:100%;min-width:0;opacity:0;cursor:pointer;z-index:1;margin:0;border:0;padding:0;font-size:16px}
 .workout-primary-actions{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:9px;margin:0 0 12px}
 .workout-primary-actions button{min-width:0;width:100%;font-size:13px;min-height:45px;padding:8px 10px}
-.workout-progress-track{height:7px;border-radius:99px;background:#e8efe9;overflow:hidden;margin:0 0 13px}
-.workout-progress-track>div{width:0;height:100%;background:#267650;border-radius:99px;transition:width .18s ease}
-.workout-group{margin:11px 0;border:1px solid #d8e4d9;border-radius:13px;overflow:hidden;background:#fff}
-.workout-group>summary{display:flex;align-items:center;gap:9px;background:#f0f5f0;padding:13px 14px;font-size:17px;font-weight:800;list-style:none;cursor:pointer}
+.workout-progress-track{height:7px;border-radius:99px;background:var(--accent-soft);overflow:hidden;margin:0 0 13px}
+.workout-progress-track>div{width:0;height:100%;background:var(--accent);border-radius:99px;transition:width .18s ease}
+.workout-group{margin:11px 0;border:1px solid var(--border);border-radius:13px;overflow:hidden;background:var(--surface)}
+.workout-group>summary{display:flex;align-items:center;gap:9px;background:var(--subtle-surface);padding:13px 14px;font-size:17px;font-weight:800;list-style:none;cursor:pointer}
 .workout-group>summary::-webkit-details-marker{display:none}
 .workout-group>summary::after{content:none!important}
-.workout-group>summary small{font-size:12px;color:#557364;font-weight:700;margin-left:auto}
-.workout-group>summary .group-chevron{width:9px;height:9px;border-right:2px solid #235743;border-bottom:2px solid #235743;transform:rotate(45deg);margin-left:5px;transition:transform .15s}
+.workout-group>summary small{font-size:12px;color:var(--muted);font-weight:700;margin-left:auto}
+.workout-group>summary .group-chevron{width:9px;height:9px;border-right:2px solid var(--accent-text);border-bottom:2px solid var(--accent-text);transform:rotate(45deg);margin-left:5px;transition:transform .15s}
 .workout-group:not([open])>summary .group-chevron{transform:rotate(-45deg)}
 .workout-exercise-list{padding:0 15px}
-.workout-exercise{padding:15px 0 16px;margin:0;border:0;border-bottom:1px solid #e4ece5;background:none}
+.workout-exercise{padding:15px 0 16px;margin:0;border:0;border-bottom:1px solid var(--border);background:none}
 .workout-exercise:last-child{border-bottom:none}
-.exercise-name{color:#1f332a;font-size:16px;line-height:1.3;font-weight:780;margin:0 0 8px;overflow-wrap:anywhere}
+.exercise-name{color:var(--ink);font-size:16px;line-height:1.3;font-weight:780;margin:0 0 8px;overflow-wrap:anywhere}
 .exercise-meta{display:flex;align-items:center;flex-wrap:wrap;gap:7px 10px;margin:0}
-.exercise-target{background:#e4f0e7;border-radius:7px;color:#17553d;padding:6px 10px;font-size:15px;font-weight:800;line-height:1.3;letter-spacing:.05px;overflow-wrap:anywhere}
-.exercise-rest{font-size:12px;color:#60766a;font-weight:600;line-height:1.3}
+.exercise-target{background:var(--accent-soft);border-radius:7px;color:var(--accent-text);padding:6px 10px;font-size:15px;font-weight:800;line-height:1.3;letter-spacing:.05px;overflow-wrap:anywhere}
+.exercise-rest{font-size:12px;color:var(--muted);font-weight:600;line-height:1.3}
 .workout-set-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin-top:11px}
-.set-check{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:6px;border:1px solid #c4d7ca;min-width:0;width:100%;min-height:46px;padding:8px 5px;border-radius:9px;background:#fff;color:#225941;font-size:13px;font-weight:750}
-.set-check .set-status{display:none;font-size:17px;font-weight:800;line-height:1;color:#17603e}
-.set-check.completed{background:#def0e3;border-color:#2d9160;color:#135738}
+.set-check{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:6px;border:1px solid var(--accent-border);min-width:0;width:100%;min-height:46px;padding:8px 5px;border-radius:9px;background:var(--surface);color:var(--accent-text);font-size:13px;font-weight:750}
+.set-check .set-status{display:none;font-size:17px;font-weight:800;line-height:1;color:var(--selected-text)}
+.set-check.completed{background:var(--selected-bg);border-color:var(--selected-border);color:var(--selected-text)}
 .set-check.completed .set-status{display:inline}
-.workout-notes{margin-top:18px;padding-top:15px;border-top:1px solid #dce5dc;background:none}
-.workout-notes label{display:block;text-transform:uppercase;letter-spacing:.3px;color:#567165;font-size:12px;font-weight:800;margin:0 0 7px}
+.workout-notes{margin-top:18px;padding-top:15px;border-top:1px solid var(--border);background:none}
+.workout-notes label{display:block;text-transform:uppercase;letter-spacing:.3px;color:var(--muted);font-size:12px;font-weight:800;margin:0 0 7px}
 .workout-notes textarea{min-height:82px}
 .workout-bottom-actions{display:flex;justify-content:flex-end;margin-top:12px}
-#workout-paste-panel{margin:12px 0;border:1px solid #dbe7dc}
+#workout-paste-panel{margin:12px 0;border:1px solid var(--border)}
 @media(max-width:600px){
  .wrap{padding-top:9px}
  #cloud-panel .sync-details{right:-5px;min-width:min(285px,84vw)}
@@ -116,9 +116,152 @@
  .set-check{min-height:44px;font-size:13px;padding:8px 4px}
  .workout-group>summary{padding:12px;font-size:16px}
 }
-</style></head><body><header><div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#b3dbc3">TRAINING & NUTRITION</div><h1>Fitness Hub</h1><p>Plan meals, track workouts, and stay consistent.</p></header><main class="wrap"><section class="panel" id="cloud-panel"><div class="sync-bar"><div class="sync-heading"><span class="sync-dot" aria-hidden="true"></span><div><strong>Cloud sync</strong><p class="muted" id="sync-status">Sign in to link your planner to Firebase.</p></div></div><div class="sync-actions"><button class="primary" id="sign-in">Sign in with Google</button><details id="account-details" class="hidden"><summary>Account</summary><div class="sync-details"><div id="uid-panel" class="hidden"><div class="sync-uid"><span>Firebase UID</span><code id="uid-value"></code><button id="copy-uid">Copy</button></div></div><p class="muted">Your planner is private to your Google account.</p><button type="button" id="sign-out" class="hidden">Sign out</button></div></details></div></div><div id="import-panel" class="hidden"><p class="muted">Upload this browser's meal plan to initialize or repair cloud data. This replaces the cloud copy.</p><button id="import-local">Upload / repair cloud planner</button></div><p class="muted" id="sync-warning">Sync is not active yet. Your changes will not appear on other devices until connected.</p></section><div id="planner-content" class="locked"><nav class="tabs main-tabs" role="tablist" aria-label="Fitness Hub sections"><button type="button" class="active" data-main="workouts" onclick="showMain('workouts')">Workouts</button><button type="button" data-main="meals" onclick="showMain('meals')">Meals</button><button type="button" data-main="routine" onclick="showMain('routine')">Daily routine</button></nav><nav class="tabs sub-tabs" id="workout-subtabs" aria-label="Workout views"><button data-tab="workouts" onclick="showTab('workouts')">Today's workout</button><button data-tab="history" onclick="showTab('history')">History</button></nav><nav class="tabs sub-tabs" id="meal-subtabs" hidden aria-label="Meal views"><button data-tab="menu" onclick="showTab('menu')">Weekly menu</button><button data-tab="groceries" onclick="showTab('groceries')">Groceries</button><button data-tab="prep" onclick="showTab('prep')">Meal prep</button></nav><section id="workouts" class="panel tab-panel" hidden>
+
+
+/* -------- Fitness Hub appearance system -------- */
+:root {
+ color-scheme: light;
+ --page:#f5f7fa; --surface:#ffffff; --subtle-surface:#f8fafc; --ink:#1d2939; --muted:#657488;
+ --hero:#243447; --hero-subtitle:#cbd8ea; --accent:#435469; --accent-hover:#354457; --accent-text:#34475c;
+ --accent-soft:#eaf0f6; --accent-border:#ccd5e0; --on-accent:#fff; --border:#e0e6ef; --border-soft:#edf1f6;
+ --input-border:#c8d3e0; --input-bg:#fff; --shadow:rgba(30,51,80,.05);
+ --selected-bg:#e3eaf2; --selected-border:#687c97; --selected-text:#263b53;
+ --positive:#239561; --positive-text:#177c50; --warning:#bd862c;
+ --danger:#ae404a; --danger-border:#e6c4c7;
+}
+:root[data-theme="ocean"] {
+ --page:#f3f6fc;--subtle-surface:#f6f9ff;--hero:#173756;--hero-subtitle:#cfe3fa;
+ --accent:#245c9c;--accent-hover:#194b85;--accent-text:#1d4f84;--accent-soft:#e7f0fb;--accent-border:#bdd1e9;
+ --selected-bg:#e0eeff;--selected-border:#6b9ad1;--selected-text:#174b80;
+}
+:root[data-theme="indigo"] {
+ --page:#f6f5fb;--subtle-surface:#faf9ff;--hero:#30294f;--hero-subtitle:#e0d8ff;
+ --accent:#6251a2;--accent-hover:#4c3d86;--accent-text:#59468f;--accent-soft:#eeeafa;--accent-border:#d2c9ed;
+ --selected-bg:#e9e1fa;--selected-border:#9984d0;--selected-text:#4d3b84;
+}
+:root[data-theme="clay"] {
+ --page:#faf7f4;--subtle-surface:#fffaf7;--hero:#623a36;--hero-subtitle:#f2dbd2;
+ --accent:#a14b38;--accent-hover:#803b2a;--accent-text:#8a412f;--accent-soft:#f9eae5;--accent-border:#e8c6bb;
+ --selected-bg:#f5dfd7;--selected-border:#c68d7d;--selected-text:#873925;
+}
+:root[data-theme="forest"] {
+ --page:#f4f6f1;--subtle-surface:#f5f9f5;--hero:#183f34;--hero-subtitle:#d3e7dc;
+ --accent:#23664d;--accent-hover:#19533d;--accent-text:#235743;--accent-soft:#e4f0e7;--accent-border:#bdd6c8;
+ --selected-bg:#def0e3;--selected-border:#2d9160;--selected-text:#135738;
+}
+:root[data-theme="midnight"] {
+ color-scheme:dark;
+ --page:#101724;--surface:#1a2536;--subtle-surface:#222f43;--ink:#e9f0fb;--muted:#b6c4d6;
+ --hero:#101d30;--hero-subtitle:#b9cbe3;--accent:#4775bd;--accent-hover:#5686d1;--accent-text:#bdd6ff;
+ --accent-soft:#283a54;--accent-border:#425a7b;--on-accent:#fff;--border:#324257;--border-soft:#2c3b50;
+ --input-border:#50627a;--input-bg:#1b2a40;--shadow:rgba(0,0,0,.22);
+ --selected-bg:#27405d;--selected-border:#628bc0;--selected-text:#d4e7ff;
+ --positive:#4aaa7e;--positive-text:#89d3ad;--warning:#d9aa65;--danger:#f0a2ab;--danger-border:#875660;
+}
+body{background:var(--page);color:var(--ink)}
+header{background:var(--hero);color:#fff}
+header p{color:var(--hero-subtitle)}
+.stat,.panel,.grocery-group,.workout-group{background:var(--surface);border-color:var(--border);box-shadow:0 3px 13px var(--shadow)}
+button,.button{background:var(--surface);border-color:var(--accent-border);color:var(--accent-text)}
+button:hover{background:var(--accent-soft)}
+button.primary,.primary{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+button.primary:hover,.primary:hover{background:var(--accent-hover);border-color:var(--accent-hover)}
+.tabs button.active,.daybuttons button.active{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+input,select,textarea{background:var(--input-bg);color:var(--ink);border-color:var(--input-border)}
+input::placeholder,textarea::placeholder{color:var(--muted);opacity:.88}
+input[type=checkbox]{accent-color:var(--accent)}
+.muted,small,th{color:var(--muted)}
+.meal{background:var(--subtle-surface)}
+.grocery-group>summary,.workout-group>summary{background:var(--subtle-surface);color:var(--accent-text)}
+.grocery-group>summary:hover,.workout-group>summary:hover{background:var(--accent-soft)}
+.workout-exercise{border-bottom-color:var(--border-soft)}
+.exercise-target,.tag,.workout-summary-count{background:var(--accent-soft);color:var(--accent-text)}
+.set-check{background:var(--surface);border-color:var(--accent-border);color:var(--accent-text)}
+.set-check.completed{background:var(--selected-bg);border-color:var(--selected-border);color:var(--selected-text)}
+.set-check.completed .set-status{color:var(--selected-text)}
+.workout-progress-track,.progress{background:var(--accent-soft)}
+.workout-progress-track>div,.progress>div{background:var(--accent)}
+.workout-date-picker{background:var(--input-bg);color:var(--ink);border-color:var(--input-border)}
+.workout-notes{border-top-color:var(--border)}
+#workout-paste-panel{border-color:var(--border)}
+.workout-edit{border-bottom-color:var(--border)}
+.workout-controls label,.meal label,.workout-notes label,.session-eyebrow{color:var(--muted)}
+.notice{background:var(--accent-soft);border-left-color:var(--accent)}
+#cloud-panel{border-color:var(--border)}
+#cloud-panel .sync-details{background:var(--surface);border-color:var(--border)}
+.grocery-item{border-bottom-color:var(--border-soft)}
+.grocery-item.checked .glabel{color:var(--muted)}
+.main-tabs{border-bottom:1px solid var(--border-soft)}
+.main-tabs button{border:0;border-bottom:2px solid transparent;border-radius:8px 8px 0 0;background:transparent;color:var(--muted)}
+.main-tabs button.active{border-bottom-color:var(--accent);border-radius:8px 8px 0 0;background:var(--accent-soft);color:var(--accent-text)}
+.main-tabs button:hover:not(.active){background:var(--subtle-surface)}
+.sub-tabs button{border-radius:999px}
+.sub-tabs button.active{background:var(--accent);color:var(--on-accent)}
+#workout-heading{color:var(--ink)}
+.workout-exercise h3{color:var(--ink)}
+.workout-group>summary .group-chevron{border-color:var(--accent-text)}
+.grocery-group>summary::after{color:var(--muted)}
+#workouts .exercise-rest{color:var(--muted)}
+#cloud-panel .sync-dot{background:var(--warning)}
+#cloud-panel:has(.sync-good) .sync-dot{background:var(--positive)}
+#cloud-panel:has(.sync-error) .sync-dot{background:var(--danger)}
+.sync-good{color:var(--positive-text)!important}
+.sync-error{color:var(--danger)!important}
+.history-row{border-color:var(--border);text-align:left}
+.history-row:hover{border-color:var(--accent-border)}
+.history-progress{height:5px;background:var(--accent-soft);border-radius:999px;overflow:hidden;margin-top:7px}
+.history-progress span{display:block;height:100%;background:var(--accent);border-radius:999px}
+.history-row .history-main{min-width:0;flex:1}
+.history-row .history-trailing{font-size:12px;color:var(--muted);white-space:nowrap}
+.history-row strong{color:var(--ink)}
+/* Theme menu sits next to Account in the compact cloud header. */
+#cloud-panel .sync-actions{position:relative;gap:2px}
+.theme-picker{position:relative;flex:0 0 auto}
+.theme-picker>summary{list-style:none;cursor:pointer;border:1px solid var(--border);border-radius:9px;color:var(--accent-text);font-weight:700;font-size:12px;padding:7px 10px;line-height:1.2;white-space:nowrap}
+.theme-picker>summary::-webkit-details-marker{display:none}
+.theme-picker>summary:hover,.theme-picker[open]>summary{background:var(--accent-soft)}
+.theme-menu{position:absolute;right:0;top:calc(100% + 8px);width:min(310px,calc(100vw - 26px));z-index:30;background:var(--surface);border:1px solid var(--border);border-radius:14px;box-shadow:0 14px 34px var(--shadow);padding:14px}
+.theme-menu h3{margin:0 0 4px;color:var(--ink);font-size:15px}
+.theme-menu p{margin:0 0 12px;font-size:12px;color:var(--muted)}
+.theme-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.theme-option{display:flex;align-items:center;gap:8px;width:100%;text-align:left;padding:9px 10px;border:1px solid var(--border);border-radius:9px;font-size:13px;color:var(--ink);background:var(--surface)}
+.theme-option:hover{background:var(--subtle-surface)}
+.theme-option[aria-pressed=true]{border-color:var(--accent);background:var(--accent-soft);color:var(--accent-text)}
+.theme-option[aria-pressed=true]:after{content:'✓';margin-left:auto;font-weight:800}
+.theme-swatch{display:inline-block;width:18px;height:18px;border-radius:50%;background:var(--swatch);border:2px solid rgba(128,128,128,.25);flex:0 0 auto}
+.theme-option[data-theme-choice=midnight] .theme-swatch{box-shadow:inset 0 0 0 3px #172438}
+.theme-option:focus-visible,.theme-picker summary:focus-visible,button:focus-visible,.set-check:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.account-backup{display:block;margin-top:12px;width:100%;text-align:left}
+.account-backup-note{font-size:11px;color:var(--muted)}
+/* A low-profile shortcut when exploring future imported workouts. */
+.today-shortcut{font-size:11px;font-weight:800;padding:4px 8px;border:0;background:var(--accent-soft);color:var(--accent-text);border-radius:8px;margin-left:8px;vertical-align:middle}
+.today-shortcut:hover{background:var(--accent-border)}
+@media(max-width:600px){
+ #cloud-panel .sync-bar{flex-wrap:nowrap}
+ #cloud-panel .sync-heading{min-width:0}
+ #cloud-panel .sync-heading p{max-width:37vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+ #cloud-panel .sync-heading p.sync-error{max-width:none;white-space:normal}
+ #cloud-panel .sync-actions{gap:3px}
+ .theme-picker>summary{font-size:12px;padding:7px 8px}
+ #cloud-panel #account-details summary{padding:7px 6px}
+ .main-tabs button{font-size:13px;min-width:0;flex:1;white-space:nowrap;padding:11px 8px}
+ .sub-tabs{margin-top:9px}
+ .sub-tabs button{padding:9px 12px}
+ .workout-set-list{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .workout-date-picker{min-width:0}
+ .workout-exercise{padding:12px 0 13px}
+ .workout-session-head{align-items:flex-start}
+}
+</style></head><body><header><div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#b3dbc3">TRAINING & NUTRITION</div><h1>Fitness Hub</h1><p>Plan meals, track workouts, and stay consistent.</p></header><main class="wrap"><section class="panel" id="cloud-panel"><div class="sync-bar"><div class="sync-heading"><span class="sync-dot" aria-hidden="true"></span><div><strong>Cloud sync</strong><p class="muted" id="sync-status">Sign in to link your planner to Firebase.</p></div></div><div class="sync-actions"><button class="primary" id="sign-in">Sign in with Google</button><details id="theme-picker" class="theme-picker"><summary aria-label="Choose color theme">◐ Theme</summary><div class="theme-menu"><h3>Appearance</h3><p>Choose your Fitness Hub color theme.</p><div class="theme-grid">
+<button type="button" class="theme-option" data-theme-choice="slate" onclick="chooseFitnessTheme('slate')"><span class="theme-swatch" style="--swatch:#435469"></span>Slate</button>
+<button type="button" class="theme-option" data-theme-choice="ocean" onclick="chooseFitnessTheme('ocean')"><span class="theme-swatch" style="--swatch:#245c9c"></span>Ocean</button>
+<button type="button" class="theme-option" data-theme-choice="indigo" onclick="chooseFitnessTheme('indigo')"><span class="theme-swatch" style="--swatch:#6251a2"></span>Indigo</button>
+<button type="button" class="theme-option" data-theme-choice="clay" onclick="chooseFitnessTheme('clay')"><span class="theme-swatch" style="--swatch:#a14b38"></span>Clay</button>
+<button type="button" class="theme-option" data-theme-choice="forest" onclick="chooseFitnessTheme('forest')"><span class="theme-swatch" style="--swatch:#23664d"></span>Forest</button>
+<button type="button" class="theme-option" data-theme-choice="midnight" onclick="chooseFitnessTheme('midnight')"><span class="theme-swatch" style="--swatch:#172438"></span>Midnight</button>
+</div></div></details><details id="account-details" class="hidden"><summary>Account</summary><div class="sync-details"><div id="uid-panel" class="hidden"><div class="sync-uid"><span>Firebase UID</span><code id="uid-value"></code><button id="copy-uid">Copy</button></div></div><p class="muted">Your planner is private to your Google account.</p><button type="button" class="account-backup" onclick="exportFitnessBackup()">Download data backup (.json)</button><p class="account-backup-note">Includes workouts, notes, meals and groceries. Keep the file private.</p><button type="button" id="sign-out" class="hidden">Sign out</button></div></details></div></div><div id="import-panel" class="hidden"><p class="muted">Upload this browser's meal plan to initialize or repair cloud data. This replaces the cloud copy.</p><button id="import-local">Upload / repair cloud planner</button></div><p class="muted" id="sync-warning">Sync is not active yet. Your changes will not appear on other devices until connected.</p></section><div id="planner-content" class="locked"><nav class="tabs main-tabs" role="tablist" aria-label="Fitness Hub sections"><button type="button" class="active" data-main="workouts" onclick="showMain('workouts')">Workouts</button><button type="button" data-main="meals" onclick="showMain('meals')">Meals</button><button type="button" data-main="routine" onclick="showMain('routine')">Daily routine</button></nav><nav class="tabs sub-tabs" id="workout-subtabs" aria-label="Workout views"><button data-tab="workouts" onclick="showTab('workouts')">Today's workout</button><button data-tab="history" onclick="showTab('history')">History</button></nav><nav class="tabs sub-tabs" id="meal-subtabs" hidden aria-label="Meal views"><button data-tab="menu" onclick="showTab('menu')">Weekly menu</button><button data-tab="groceries" onclick="showTab('groceries')">Groceries</button><button data-tab="prep" onclick="showTab('prep')">Meal prep</button></nav><section id="workouts" class="panel tab-panel" hidden>
 <div class="workout-session-head">
-  <div><p class="session-eyebrow">WORKOUT</p><h2 id="workout-heading">Today's workout</h2></div>
+  <div><p class="session-eyebrow">WORKOUT <button class="today-shortcut no-print" type="button" onclick="selectWorkoutDate(localDate())">Today</button></p><h2 id="workout-heading">Today's workout</h2></div>
   <span id="workout-count" class="workout-summary-count" aria-live="polite"></span>
 </div>
 <div class="workout-date-row">
@@ -157,6 +300,34 @@
 </section>
 <section id="prep" class="panel tab-panel" hidden><h2>Sunday meal prep · 60–75 minutes</h2><p class="muted">Aim to prep lunches and make weeknight dinners easier, not cook everything in advance.</p><div id="preplist"></div><div class="row no-print"><button onclick="resetPrep()">Reset prep checklist</button></div><div class="reference-section"><h3>Quick lunch portions</h3><div class="cards"><div class="meal"><b>Turkey rice bowl</b><p>6 oz cooked 93% lean turkey + 1 cup cooked rice + 1–2 cups broccoli + sauce.</p><small>~550–650 kcal · 45–50 g protein</small></div><div class="meal"><b>Chicken burrito bowl</b><p>6 oz cooked chicken + ¾ cup rice + ½ cup beans + peppers, salsa, lettuce and avocado.</p><small>~600–700 kcal · 50–60 g protein</small></div><div class="meal"><b>Turkey panini</b><p>2 slices whole-grain bread + 5–6 oz turkey + cheese, spinach, mustard and apple.</p><small>~500–600 kcal · 40–50 g protein</small></div></div></div><p class="notice">Food safety: refrigerate cooked food promptly, use most refrigerated leftovers within 3–4 days, and freeze later portions.</p></section>
 </div></main><script>
+const FITNESS_THEMES=['slate','ocean','indigo','clay','forest','midnight'];
+const THEME_KEY='fitness-hub-theme-v2';
+function applyFitnessTheme(theme){
+ const safe=FITNESS_THEMES.includes(theme)?theme:'slate';
+ document.documentElement.dataset.theme=safe;
+ try{localStorage.setItem(THEME_KEY,safe)}catch(e){}
+ document.querySelectorAll('[data-theme-choice]').forEach(el=>el.setAttribute('aria-pressed',String(el.dataset.themeChoice===safe)));
+}
+function chooseFitnessTheme(theme){
+ if(!FITNESS_THEMES.includes(theme))return;
+ applyFitnessTheme(theme);
+ if(typeof state!=='undefined'){
+  state.preferences=state.preferences&&typeof state.preferences==='object'?state.preferences:{};
+  state.preferences.theme=theme;
+  save();
+ }
+ document.getElementById('theme-picker').open=false;
+}
+function exportFitnessBackup(){
+ const payload={app:'Fitness Hub',version:1,exportedAt:new Date().toISOString(),data:clone(state)};
+ const d=localDate();
+ const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});
+ const url=URL.createObjectURL(blob),a=document.createElement('a');
+ a.href=url;a.download='fitness-hub-backup-'+d+'.json';document.body.appendChild(a);a.click();a.remove();
+ setTimeout(()=>URL.revokeObjectURL(url),1500);
+}
+document.addEventListener('pointerdown',e=>{const p=document.getElementById('theme-picker');if(p?.open&&!p.contains(e.target))p.open=false});
+applyFitnessTheme(document.documentElement.dataset.theme);
 const sectionGroup={workouts:'workouts',history:'workouts',menu:'meals',groceries:'meals',prep:'meals',schedule:'routine'};
 function showMain(group){
  const previous=document.querySelector('.tab-panel:not([hidden])')?.id;
@@ -225,20 +396,42 @@ function renderPrep(){document.getElementById('preplist').innerHTML=prepSteps.ma
 // Workout plans are editable templates; each date gets its own log.
 const workoutDays=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
 const starterWorkouts={
- Monday:{title:'Upper body A',exercises:[['Incline dumbbell press','3','8–10','90 sec','Lift'],['Seated cable row','3','8–12','90 sec','Lift'],['Dumbbell shoulder press','3','8–10','75 sec','Lift'],['Bicycle crunches','3','20','45 sec','Core']]},
- Tuesday:{title:'Lower body A',exercises:[['Squat or leg press','3','6–10','120 sec','Lift'],['Romanian deadlift','3','8–10','90 sec','Lift'],['Reverse lunges','3','10/leg','75 sec','Lift'],['Plank','3','45 sec','45 sec','Core']]},
- Wednesday:{title:'Active recovery',exercises:[['Easy cardio','1','20–30 min','—','Cardio'],['Dynamic mobility','1','10 min','—','Mobility']]},
- Thursday:{title:'Upper body B',exercises:[['Flat dumbbell press','3','8–12','90 sec','Lift'],['Lat pulldown or pull-ups','3','8–12','90 sec','Lift'],['Lateral raises','3','12–15','60 sec','Lift'],['Leg raises','3','12–15','45 sec','Core']]},
- Friday:{title:'Lower body B',exercises:[['Deadlift variation','3','5–8','120 sec','Lift'],['Leg press','3','10–12','90 sec','Lift'],['Hamstring curl','3','10–12','75 sec','Lift'],['Ab rollouts','3','8–12','45 sec','Core']]},
- Saturday:{title:'Active recovery',exercises:[['Walk, hike, bike or golf','1','30–45 min','—','Cardio'],['Mobility','1','10 min','—','Mobility']]},
- Sunday:{title:'Rest / light movement',exercises:[['Easy walk or stretch (optional)','1','15–30 min','—','Recovery']]}
+ Monday:{title:'Push Strength — Chest, Shoulders & Triceps',exercises:[
+  ['Bike / treadmill warm-up','1','13 min','—','Cardio'],['Mobility routine','1','Your usual routine','—','Mobility'],
+  ['Barbell bench press','3','6–8','120 sec','Lift'],['Incline dumbbell press','2','8–10','75 sec','Lift'],['Seated dumbbell shoulder press','2','8–10','75 sec','Lift'],
+  ['Rope triceps pressdown','2','10–12','45 sec','Lift'],['Overhead triceps extension','2','10–12','45 sec','Lift'],
+  ['Weighted cable crunches','1','12–15','30 sec','Core'],['Hanging leg raises','1','8–12','30 sec','Core'],['Plank','1','45 sec','30 sec','Core']]},
+ Tuesday:{title:'Lower Body Strength',exercises:[
+  ['Stationary bike','1','10 min','—','Cardio'],['Mobility routine','1','Your usual routine','—','Mobility'],
+  ['Squat or leg press','3','6–8','120 sec','Lift'],['Romanian deadlift','3','8–10','90 sec','Lift'],['Reverse lunges','2','8/leg','75 sec','Lift'],
+  ['Incline sit-ups','1','12–15','30 sec','Core'],['Bicycle crunches','1','20 total','30 sec','Core'],['Side plank','1','30 sec/side','30 sec','Core']]},
+ Wednesday:{title:'Active Recovery, Mobility & Sauna',exercises:[
+  ['Brisk incline treadmill walk','1','32 min','—','Cardio'],['Mobility routine','1','Your usual routine','—','Mobility'],
+  ['Dead bugs','1','8/side','30 sec','Core'],['Bird dogs','1','8/side','30 sec','Core'],['Side plank','1','30 sec/side','30 sec','Core'],
+  ['Optional sauna — after workout','1','5–15 min as tolerated','—','Recovery']]},
+ Thursday:{title:'Pull Hypertrophy — Back & Biceps',exercises:[
+  ['Moderate cardio','1','13 min','—','Cardio'],['Mobility routine','1','Your usual routine','—','Mobility'],
+  ['Lat pulldown','3','8–12','75 sec','Lift'],['Seated cable row','3','10–12','75 sec','Lift'],['Cable face pulls','2','12–15','60 sec','Lift'],
+  ['Incline dumbbell biceps curls','3','10–12','60 sec','Lift'],['Hammer curls','2','10–12','45 sec','Lift'],
+  ['Ab wheel rollouts','1','8–10','45 sec','Core'],['Standing plate side crunches','1','12/side','30 sec','Core'],['Hanging leg raises','1','8–12','30 sec','Core']]},
+ Friday:{title:'Full Body Athletic + Arm Pump',exercises:[
+  ['Moderate cardio','1','12 min','—','Cardio'],['Mobility routine','1','Your usual routine','—','Mobility'],
+  ['Dumbbell squat to press','2','8','75 sec','Lift'],['Single-arm dumbbell row','2','10/side','60 sec','Lift'],['Push-ups','2','12–15','60 sec','Lift'],
+  ['Alternating dumbbell curls','2','10–12','45 sec','Lift'],['Cross-body hammer curls','2','10–12','45 sec','Lift'],['Overhead dumbbell triceps extension','2','10–12','45 sec','Lift'],['Rope triceps pressdown','2','12–15','45 sec','Lift'],
+  ['Russian twists','1','20 total','30 sec','Core'],['Weighted cable crunch','1','12–15','30 sec','Core'],['Bicycle crunches','1','20 total','30 sec','Core']]},
+ Saturday:{title:'Conditioning, Mobility & Sauna',exercises:[
+  ['Treadmill conditioning','1','38 min','—','Cardio'],['Mobility routine','1','Your usual routine','—','Mobility'],
+  ['Plank','1','45 sec','30 sec','Core'],['Lying leg raises','1','12','30 sec','Core'],['Bird dogs','1','8/side','30 sec','Core'],
+  ['Optional sauna — after workout','1','5–15 min as tolerated','—','Recovery']]},
+ Sunday:{title:'Rest / Optional Recovery',exercises:[['Optional easy walk','1','20–30 min','—','Recovery'],['Optional mobility routine','1','Your usual routine','—','Mobility']]}
 };
-const makeWorkoutTemplates=()=>Object.fromEntries(Object.entries(starterWorkouts).map(([day,v])=>[day,{title:v.title,exercises:[{id:crypto.randomUUID(),name:'Cardio warm-up',sets:1,reps:'5–8 min',rest:'—',block:'Cardio'},...v.exercises.map(([name,sets,reps,rest,block])=>({id:crypto.randomUUID(),name,sets:+sets,reps,rest,block}))]}]));
+const makeWorkoutTemplates=()=>Object.fromEntries(Object.entries(starterWorkouts).map(([day,v])=>[day,{title:v.title,exercises:v.exercises.map(([name,sets,reps,rest,block])=>({id:crypto.randomUUID(),name,sets:+sets,reps,rest,block}))}]));
+function dailyTemplate(day){const t=state.workoutTemplates?.[day];const legacy=t&&((t.title==='Upper body A'&&day==='Monday')||(t.title==='Upper body B'&&day==='Thursday')||(t.title==='Lower body B'&&day==='Friday')||(t.title==='Lower body A'&&day==='Tuesday'));return (!t||legacy)?makeWorkoutTemplates()[day]:t;}
 function ensureWorkoutState(){if(!state.workoutTemplates||typeof state.workoutTemplates!=='object')state.workoutTemplates=makeWorkoutTemplates();if(!state.workoutLogs||typeof state.workoutLogs!=='object')state.workoutLogs={};}
 const localDate=()=>{const d=new Date();return [d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-')};
 let workoutDate=localDate(),editingWorkout=false;
 const dayForDate=date=>{const d=new Date(date+'T12:00:00');return workoutDays[(d.getDay()+6)%7]};
-function getWorkoutLog(){ensureWorkoutState();if(!state.workoutLogs[workoutDate]){const day=dayForDate(workoutDate);state.workoutLogs[workoutDate]={day,notes:'',sets:{},title:state.workoutTemplates[day].title,exercises:clone(state.workoutTemplates[day].exercises)}}const log=state.workoutLogs[workoutDate];if(!Array.isArray(log.exercises)){const t=state.workoutTemplates[log.day]||state.workoutTemplates[dayForDate(workoutDate)];log.title=t.title;log.exercises=clone(t.exercises)}return log}
+function getWorkoutLog(){ensureWorkoutState();if(!state.workoutLogs[workoutDate]){const day=dayForDate(workoutDate);const template=dailyTemplate(day);state.workoutLogs[workoutDate]={day,notes:'',sets:{},title:template.title,exercises:clone(template.exercises)}}const log=state.workoutLogs[workoutDate];if(!Array.isArray(log.exercises)){const t=state.workoutTemplates[log.day]||state.workoutTemplates[dayForDate(workoutDate)];log.title=t.title;log.exercises=clone(t.exercises)}return log}
 function workoutPlan(){return getWorkoutLog()}
 function selectWorkoutDate(value){if(!/^\d{4}-\d{2}-\d{2}$/.test(value))return;workoutDate=value;editingWorkout=false;renderWorkouts()}
 function formatWorkoutDate(value){const d=new Date(value+'T12:00:00');return Number.isNaN(d.getTime())?value:new Intl.DateTimeFormat('en-US',{weekday:'short',month:'short',day:'numeric',year:'numeric'}).format(d)}
@@ -265,7 +458,7 @@ function applyImportedWorkout(data){
 function importPastedWorkout(){try{const data=parseWorkoutText(document.getElementById('workout-paste-text').value);if(applyImportedWorkout(data)){document.getElementById('workout-paste-text').value='';togglePasteWorkout(false);alert('Workout imported and saved to your planner.')}}catch(e){alert('Could not import workout: '+e.message)}}
 async function importWorkoutFile(input){const file=input.files?.[0];input.value='';if(!file)return;try{if(file.size>100000)throw Error('File is too large');if(applyImportedWorkout(parseWorkoutText(await file.text())))alert('Workout imported and saved.')}catch(e){alert('Could not import workout: '+e.message)}}
 
-function updateWorkoutSet(id,index,field,value){const log=getWorkoutLog();if(!log.sets[id])log.sets[id]=[];if(!log.sets[id][index])log.sets[id][index]={done:false};log.sets[id][index][field]=value;save();renderWorkoutCount();const btn=document.querySelector(`[data-set-exercise="${id}"][data-set-index="${index}"]`);if(btn){btn.classList.toggle('completed',!!value);btn.setAttribute('aria-pressed',String(!!value));btn.querySelector('.set-status').textContent=value?'✓':'';btn.setAttribute('aria-label',(value?'Mark':'Mark')+' set '+(index+1)+(value?' not completed':' complete'));}}
+function updateWorkoutSet(id,index,field,value){const log=getWorkoutLog();if(!log.sets[id])log.sets[id]=[];if(!log.sets[id][index])log.sets[id][index]={done:false};log.sets[id][index][field]=value;save();renderWorkoutCount();const btn=document.querySelector(`[data-set-exercise="${id}"][data-set-index="${index}"]`);if(btn){btn.classList.toggle('completed',!!value);btn.setAttribute('aria-pressed',String(!!value));btn.querySelector('.set-status').textContent=value?'✓':'';btn.setAttribute('aria-label',(value?'Uncheck':'Complete')+' set '+(index+1));}}
 function updateWorkoutNotes(value){getWorkoutLog().notes=value;save()}
 function renderWorkoutCount(){const log=getWorkoutLog();let total=0,done=0;const byBlock={};for(const ex of log.exercises){const group=byBlock[ex.block]||(byBlock[ex.block]={done:0,total:0});for(let i=0;i<ex.sets;i++){total++;group.total++;if(log.sets[ex.id]?.[i]?.done){done++;group.done++}}}document.getElementById('workout-count').textContent=`${done} / ${total} sets`;const pct=total?Math.round(100*done/total):0;document.getElementById('workout-progress-fill').style.width=pct+'%';document.querySelector('.workout-progress-track').setAttribute('aria-valuenow',String(pct));for(const el of document.querySelectorAll('[data-block-progress]')){const group=byBlock[el.dataset.blockProgress]||{done:0,total:0};el.textContent=`${group.done}/${group.total} sets`}}
 function renderWorkouts(){
@@ -290,10 +483,10 @@ function renderWorkouts(){
  document.getElementById('workout-notes').value=log.notes||'';
  renderWorkoutCount();
 }
-function renderWorkoutHistory(){ensureWorkoutState();const rows=Object.entries(state.workoutLogs).sort(([a],[b])=>b.localeCompare(a)).slice(0,90);document.getElementById('history-count').textContent=`${rows.length} sessions`;document.getElementById('workout-history').innerHTML=rows.length?rows.map(([date,log])=>{const template=log;const done=Object.values(log.sets||{}).flat().filter(x=>x?.done).length;return `<button class="history-row" onclick="selectWorkoutDate('${date}');showTab('workouts')"><span><strong>${esc(date)}</strong><small>${esc(template?.title||log.day)} · ${done} completed sets</small></span><span>View →</span></button>`}).join(''):'<p class="muted">Your logged workouts will appear here.</p>'}
+function renderWorkoutHistory(){ensureWorkoutState();const rows=Object.entries(state.workoutLogs).sort(([a],[b])=>b.localeCompare(a)).slice(0,90);const logged=rows.filter(([date,log])=>log.exercises?.some(ex=>Array.from({length:ex.sets},(_,i)=>!!log.sets?.[ex.id]?.[i]?.done).some(Boolean))).length;document.getElementById('history-count').textContent=`${logged} started · ${rows.length} dates`;document.getElementById('workout-history').innerHTML=rows.length?rows.map(([date,log])=>{const total=(log.exercises||[]).reduce((n,e)=>n+(Number(e.sets)||0),0);const done=(log.exercises||[]).reduce((n,e)=>n+Array.from({length:Number(e.sets)||0},(_,i)=>!!log.sets?.[e.id]?.[i]?.done).filter(Boolean).length,0);const percent=total?Math.round(100*done/total):0;const label=done===0?'Planned':percent===100?'Complete':'In progress';return `<button class="history-row" onclick="selectWorkoutDate('${date}');showTab('workouts')"><span class="history-main"><strong>${esc(formatWorkoutDate(date))}</strong><small>${esc(log.title||log.day)} · ${done}/${total} sets</small><span class="history-progress"><span style="width:${percent}%"></span></span></span><span class="history-trailing">${label} →</span></button>`}).join(''):'<p class="muted">Your planned and completed workouts will appear here.</p>'}
 function copyWorkoutSummary(){const log=getWorkoutLog(),lines=[`Workout ${workoutDate} — ${log.title}`];for(const ex of log.exercises){const completed=Array.from({length:ex.sets},(_,i)=>!!log.sets[ex.id]?.[i]?.done).filter(Boolean).length;lines.push(`${ex.block}: ${ex.name} — ${completed}/${ex.sets} sets completed (target ${ex.reps}, rest ${ex.rest})`)}lines.push('Notes: '+(log.notes||'None'));copy(lines.join('\n'))}
 ensureWorkoutState();
-window.getLocalPlanner=()=>clone(state);window.applyCloudPlanner=remote=>{state=clone(remote);ensureWorkoutState();localStorage.setItem(KEY,JSON.stringify(state));window.renderPlanner()};window.renderPlanner=()=>{renderMenu();renderGroceries();renderPrep();renderWorkouts();renderWorkoutHistory()};renderPlanner();showTab(sessionStorage.getItem('meal-planner-tab')||'workouts');
+window.getLocalPlanner=()=>clone(state);window.applyCloudPlanner=remote=>{state=clone(remote);ensureWorkoutState();if(FITNESS_THEMES.includes(state.preferences?.theme))applyFitnessTheme(state.preferences.theme);localStorage.setItem(KEY,JSON.stringify(state));window.renderPlanner()};window.renderPlanner=()=>{renderMenu();renderGroceries();renderPrep();renderWorkouts();renderWorkoutHistory()};renderPlanner();let initialHubTab='workouts';try{initialHubTab=sessionStorage.getItem('meal-planner-tab')||'workouts'}catch(e){}showTab(initialHubTab);
 </script><script type="module">
 import {initializeApp} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
 import {getAuth,GoogleAuthProvider,signInWithPopup,signInWithRedirect,getRedirectResult,onAuthStateChanged,signOut} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
