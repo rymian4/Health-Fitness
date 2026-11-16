@@ -49,14 +49,94 @@
  .workout-help{margin:8px 0 12px;line-height:1.45}
  #workouts>.row{gap:10px}
 }
-</style></head><body><header><div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#b3dbc3">TRAINING & NUTRITION</div><h1>Fitness Hub</h1><p>Plan meals, track workouts, and stay consistent.</p></header><main class="wrap"><section class="panel" id="cloud-panel"><div class="sync-bar"><div class="sync-heading"><span class="sync-dot" aria-hidden="true"></span><div><strong>Cloud sync</strong><p class="muted" id="sync-status">Sign in to link your planner to Firebase.</p></div></div><div class="sync-actions"><button class="primary" id="sign-in">Sign in with Google</button><details id="account-details" class="hidden"><summary>Account</summary><div class="sync-details"><div id="uid-panel" class="hidden"><div class="sync-uid"><span>Firebase UID</span><code id="uid-value"></code><button id="copy-uid">Copy</button></div></div><p class="muted">Your planner is private to your Google account.</p></div></details><button id="sign-out" class="hidden">Sign out</button></div></div><div id="import-panel" class="hidden"><p class="muted">Upload this browser's meal plan to initialize or repair cloud data. This replaces the cloud copy.</p><button id="import-local">Upload / repair cloud planner</button></div><p class="muted" id="sync-warning">Sync is not active yet. Your changes will not appear on other devices until connected.</p></section><div id="planner-content" class="locked"><nav class="tabs main-tabs" role="tablist" aria-label="Fitness Hub sections"><button type="button" class="active" data-main="workouts" onclick="showMain('workouts')">Workouts</button><button type="button" data-main="meals" onclick="showMain('meals')">Meals</button><button type="button" data-main="routine" onclick="showMain('routine')">Daily routine</button></nav><nav class="tabs sub-tabs" id="workout-subtabs" aria-label="Workout views"><button data-tab="workouts" onclick="showTab('workouts')">Today's workout</button><button data-tab="history" onclick="showTab('history')">History</button></nav><nav class="tabs sub-tabs" id="meal-subtabs" hidden aria-label="Meal views"><button data-tab="menu" onclick="showTab('menu')">Weekly menu</button><button data-tab="groceries" onclick="showTab('groceries')">Groceries</button><button data-tab="prep" onclick="showTab('prep')">Meal prep</button></nav><section id="workouts" class="panel tab-panel" hidden>
-<div class="row"><h2>Workout tracker</h2><span class="tag">Cardio → Lifting → Core</span></div>
-<p class="muted workout-help">Track your sets or paste a workout from ChatGPT.</p>
-<div class="workout-controls"><label>Workout date<input id="workout-date" type="date" onchange="selectWorkoutDate(this.value)"></label><label>Template day<select id="workout-day" onchange="selectWorkoutDay(this.value)"></select></label></div>
-<div class="row"><h3 id="workout-heading">Workout</h3><button onclick="toggleWorkoutEdit()" id="workout-edit-button">Edit this workout</button></div><div class="workout-import-actions no-print"><button class="primary" type="button" onclick="togglePasteWorkout()">Paste workout from ChatGPT</button></div><div id="workout-paste-panel" class="meal hidden"><label for="workout-paste-text">Paste the workout JSON from ChatGPT</label><textarea id="workout-paste-text" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder='{"date":"2026-11-16","title":"Upper body","exercises":[...]}'></textarea><div class="row"><button class="primary" type="button" onclick="importPastedWorkout()">Import pasted workout</button><button type="button" onclick="togglePasteWorkout(false)">Cancel</button></div><small>This replaces the selected date’s workout and its logged sets after confirmation.</small></div><p class="muted" style="font-size:12px">Tap sets to mark them complete. Pasting a new workout replaces this date’s current plan and checkmarks.</p>
-<div id="workout-template-editor" class="hidden"></div><div id="workout-exercises"></div>
-<div class="meal"><label for="workout-notes">Session notes / feedback</label><textarea id="workout-notes" placeholder="Energy, cardio, progress, what to adjust next time..." oninput="updateWorkoutNotes(this.value)"></textarea></div>
-<div class="row"><span class="muted" id="workout-count"></span><button onclick="copyWorkoutSummary()">Copy workout for ChatGPT</button></div>
+
+/* 2026-11 mobile workout refinements: flatter blocks, clearer prescription, compact controls. */
+#cloud-panel{padding:9px 13px;margin:0 0 10px}
+#cloud-panel .sync-bar{flex-wrap:nowrap;gap:8px}
+#cloud-panel .sync-heading{flex:1 1 auto;min-width:0}
+#cloud-panel .sync-heading p{line-height:1.25;font-size:11px}
+#cloud-panel .sync-actions{flex:0 0 auto}
+#cloud-panel #account-details summary{padding:5px 6px}
+#cloud-panel .sync-details #sign-out{display:block;margin-top:12px}
+#workouts{min-width:0;overflow:hidden}
+.workout-session-head{display:flex;align-items:center;justify-content:space-between;gap:10px;min-width:0;margin-bottom:12px}
+.workout-session-head>div{min-width:0}
+.session-eyebrow{font-size:10px;font-weight:800;letter-spacing:1.3px;color:#647c70;margin:0 0 5px}
+#workout-heading{font-size:clamp(20px,3.9vw,27px);line-height:1.22;margin:0;overflow-wrap:anywhere}
+.workout-summary-count{white-space:nowrap;align-self:center;font-size:12px;font-weight:750;color:#23664d;background:#e7f2ea;border-radius:99px;padding:7px 11px}
+.workout-date-row{display:grid;grid-template-columns:42px minmax(0,1fr) 42px;gap:8px;align-items:stretch;width:100%;min-width:0;margin:0 0 10px}
+.workout-date-row .date-step{font-size:28px;font-weight:400;line-height:1;min-height:45px;padding:5px}
+.workout-date-picker{display:flex;position:relative;align-items:center;justify-content:center;gap:8px;min-width:0;max-width:100%;overflow:hidden;border:1px solid #b9d0c1;border-radius:10px;background:white;padding:10px 9px;color:#20302b;text-align:center;cursor:pointer;font-size:15px;font-weight:750;line-height:1.3;white-space:nowrap}
+.workout-date-picker #workout-date-display{min-width:0;text-overflow:ellipsis;overflow:hidden}
+.workout-date-picker .date-calendar{flex:0 0 auto;font-size:16px;opacity:.65}
+.workout-date-picker input[type=date]{position:absolute;inset:0;width:100%;height:100%;max-width:100%;min-width:0;opacity:0;cursor:pointer;z-index:1;margin:0;border:0;padding:0;font-size:16px}
+.workout-primary-actions{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:9px;margin:0 0 12px}
+.workout-primary-actions button{min-width:0;width:100%;font-size:13px;min-height:45px;padding:8px 10px}
+.workout-progress-track{height:7px;border-radius:99px;background:#e8efe9;overflow:hidden;margin:0 0 13px}
+.workout-progress-track>div{width:0;height:100%;background:#267650;border-radius:99px;transition:width .18s ease}
+.workout-group{margin:11px 0;border:1px solid #d8e4d9;border-radius:13px;overflow:hidden;background:#fff}
+.workout-group>summary{display:flex;align-items:center;gap:9px;background:#f0f5f0;padding:13px 14px;font-size:17px;font-weight:800;list-style:none;cursor:pointer}
+.workout-group>summary::-webkit-details-marker{display:none}
+.workout-group>summary::after{content:none!important}
+.workout-group>summary small{font-size:12px;color:#557364;font-weight:700;margin-left:auto}
+.workout-group>summary .group-chevron{width:9px;height:9px;border-right:2px solid #235743;border-bottom:2px solid #235743;transform:rotate(45deg);margin-left:5px;transition:transform .15s}
+.workout-group:not([open])>summary .group-chevron{transform:rotate(-45deg)}
+.workout-exercise-list{padding:0 15px}
+.workout-exercise{padding:15px 0 16px;margin:0;border:0;border-bottom:1px solid #e4ece5;background:none}
+.workout-exercise:last-child{border-bottom:none}
+.exercise-name{color:#1f332a;font-size:16px;line-height:1.3;font-weight:780;margin:0 0 8px;overflow-wrap:anywhere}
+.exercise-meta{display:flex;align-items:center;flex-wrap:wrap;gap:7px 10px;margin:0}
+.exercise-target{background:#e4f0e7;border-radius:7px;color:#17553d;padding:6px 10px;font-size:15px;font-weight:800;line-height:1.3;letter-spacing:.05px;overflow-wrap:anywhere}
+.exercise-rest{font-size:12px;color:#60766a;font-weight:600;line-height:1.3}
+.workout-set-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin-top:11px}
+.set-check{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:6px;border:1px solid #c4d7ca;min-width:0;width:100%;min-height:46px;padding:8px 5px;border-radius:9px;background:#fff;color:#225941;font-size:13px;font-weight:750}
+.set-check .set-status{display:none;font-size:17px;font-weight:800;line-height:1;color:#17603e}
+.set-check.completed{background:#def0e3;border-color:#2d9160;color:#135738}
+.set-check.completed .set-status{display:inline}
+.workout-notes{margin-top:18px;padding-top:15px;border-top:1px solid #dce5dc;background:none}
+.workout-notes label{display:block;text-transform:uppercase;letter-spacing:.3px;color:#567165;font-size:12px;font-weight:800;margin:0 0 7px}
+.workout-notes textarea{min-height:82px}
+.workout-bottom-actions{display:flex;justify-content:flex-end;margin-top:12px}
+#workout-paste-panel{margin:12px 0;border:1px solid #dbe7dc}
+@media(max-width:600px){
+ .wrap{padding-top:9px}
+ #cloud-panel .sync-details{right:-5px;min-width:min(285px,84vw)}
+ #cloud-panel .sync-heading strong{font-size:12px}
+ #cloud-panel .sync-heading p{font-size:10px}
+ .main-tabs{margin-top:9px}
+ #workouts{padding:14px 13px}
+ .workout-date-row{grid-template-columns:38px minmax(0,1fr) 38px;gap:6px}
+ .workout-date-row .date-step{min-height:44px}
+ .workout-date-picker{font-size:14px;padding:10px 6px}
+ .workout-summary-count{font-size:11px;padding:6px 8px}
+ .workout-exercise-list{padding:0 12px}
+ .workout-exercise{padding:13px 0 14px}
+ .exercise-name{font-size:16px}
+ .exercise-target{font-size:15px;padding:6px 9px}
+ .set-check{min-height:44px;font-size:13px;padding:8px 4px}
+ .workout-group>summary{padding:12px;font-size:16px}
+}
+</style></head><body><header><div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#b3dbc3">TRAINING & NUTRITION</div><h1>Fitness Hub</h1><p>Plan meals, track workouts, and stay consistent.</p></header><main class="wrap"><section class="panel" id="cloud-panel"><div class="sync-bar"><div class="sync-heading"><span class="sync-dot" aria-hidden="true"></span><div><strong>Cloud sync</strong><p class="muted" id="sync-status">Sign in to link your planner to Firebase.</p></div></div><div class="sync-actions"><button class="primary" id="sign-in">Sign in with Google</button><details id="account-details" class="hidden"><summary>Account</summary><div class="sync-details"><div id="uid-panel" class="hidden"><div class="sync-uid"><span>Firebase UID</span><code id="uid-value"></code><button id="copy-uid">Copy</button></div></div><p class="muted">Your planner is private to your Google account.</p><button type="button" id="sign-out" class="hidden">Sign out</button></div></details></div></div><div id="import-panel" class="hidden"><p class="muted">Upload this browser's meal plan to initialize or repair cloud data. This replaces the cloud copy.</p><button id="import-local">Upload / repair cloud planner</button></div><p class="muted" id="sync-warning">Sync is not active yet. Your changes will not appear on other devices until connected.</p></section><div id="planner-content" class="locked"><nav class="tabs main-tabs" role="tablist" aria-label="Fitness Hub sections"><button type="button" class="active" data-main="workouts" onclick="showMain('workouts')">Workouts</button><button type="button" data-main="meals" onclick="showMain('meals')">Meals</button><button type="button" data-main="routine" onclick="showMain('routine')">Daily routine</button></nav><nav class="tabs sub-tabs" id="workout-subtabs" aria-label="Workout views"><button data-tab="workouts" onclick="showTab('workouts')">Today's workout</button><button data-tab="history" onclick="showTab('history')">History</button></nav><nav class="tabs sub-tabs" id="meal-subtabs" hidden aria-label="Meal views"><button data-tab="menu" onclick="showTab('menu')">Weekly menu</button><button data-tab="groceries" onclick="showTab('groceries')">Groceries</button><button data-tab="prep" onclick="showTab('prep')">Meal prep</button></nav><section id="workouts" class="panel tab-panel" hidden>
+<div class="workout-session-head">
+  <div><p class="session-eyebrow">WORKOUT</p><h2 id="workout-heading">Today's workout</h2></div>
+  <span id="workout-count" class="workout-summary-count" aria-live="polite"></span>
+</div>
+<div class="workout-date-row">
+  <button type="button" class="date-step" onclick="shiftWorkoutDate(-1)" aria-label="Previous day">&#8249;</button>
+  <label class="workout-date-picker" for="workout-date"><span id="workout-date-display">Select date</span><span class="date-calendar" aria-hidden="true">&#128197;</span><input id="workout-date" type="date" aria-label="Choose workout date" onchange="selectWorkoutDate(this.value)"></label>
+  <button type="button" class="date-step" onclick="shiftWorkoutDate(1)" aria-label="Next day">&#8250;</button>
+  <select id="workout-day" hidden aria-label="Starting template day"></select>
+</div>
+<div class="workout-primary-actions no-print">
+  <button class="primary" type="button" onclick="togglePasteWorkout()">Paste workout</button>
+  <button type="button" onclick="toggleWorkoutEdit()" id="workout-edit-button">Edit workout</button>
+</div>
+<div id="workout-paste-panel" class="meal hidden"><label for="workout-paste-text">Paste the workout JSON from ChatGPT</label><textarea id="workout-paste-text" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder='{"date":"2026-11-16","title":"Upper body","exercises":[...]}'></textarea><div class="row"><button class="primary" type="button" onclick="importPastedWorkout()">Import pasted workout</button><button type="button" onclick="togglePasteWorkout(false)">Cancel</button></div><small>Importing replaces the selected date's workout and completed sets after you confirm.</small></div>
+<div class="workout-progress-track" role="progressbar" aria-label="Workout set completion" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div id="workout-progress-fill"></div></div>
+<div id="workout-template-editor" class="hidden"></div>
+<div id="workout-exercises"></div>
+<div class="workout-notes"><label for="workout-notes">Session notes / feedback</label><textarea id="workout-notes" placeholder="Energy, cardio, progress, adjustments..." oninput="updateWorkoutNotes(this.value)"></textarea></div>
+<div class="workout-bottom-actions no-print"><button onclick="copyWorkoutSummary()">Copy workout for ChatGPT</button></div>
 </section>
 <section id="history" class="panel tab-panel" hidden><div class="row"><h2>Workout history</h2><span class="tag" id="history-count"></span></div><p class="muted">Open a previous date to review or continue logging. Your recent sessions are synced privately.</p><div id="workout-history"></div></section>
 <section id="schedule" class="panel tab-panel" hidden><h2>Daily routine</h2><table><thead><tr><th>When</th><th>What</th><th>Portion guide</th></tr></thead><tbody><tr><td>Before gym</td><td>Prolific-1 + water; banana if hungry</td><td>Start at ½ scoop; assess tolerance before 1 scoop</td></tr><tr><td>After gym</td><td><b>ISO100 shake + Nutricost creatine</b></td><td>1 scoop protein (25 g) + 3–5 g creatine, water/almond milk</td></tr><tr><td>9 AM</td><td>Light breakfast</td><td>20–30 g protein; ~250–350 kcal</td></tr><tr><td>12–1 PM</td><td>Meal-prepped lunch</td><td>1½–2 palms protein, 1–2 fists carbs, vegetables</td></tr><tr><td>3 PM</td><td>Afternoon snack</td><td>Protein + fruit or crackers</td></tr><tr><td>6–7 PM</td><td>Dinner with fiancée</td><td>1½–2 palms protein, 1–2 fists carbs, vegetables</td></tr><tr><td>Evening</td><td>Optional dessert</td><td>Enjoy a moderate portion</td></tr></tbody></table><p class="muted">On rest days, skip pre-workout; creatine remains daily. Protein shake can be used whenever convenient to help meet protein needs.</p><div class="reference-section"><h3>Portion guide</h3><div class="grid2"><div class="meal"><b>Protein</b><p>1½–2 palms at lunch and dinner (~5–7 oz cooked meat/fish).</p></div><div class="meal"><b>Carbs</b><p>1–2 fists rice, potatoes, pasta, or grains; more on harder training days.</p></div><div class="meal"><b>Vegetables</b><p>1–2 fists at lunch and dinner.</p></div><div class="meal"><b>Fats</b><p>1–2 thumbs added oils, avocado, nuts or dressings; adjust for fatty proteins.</p></div></div></div></section>
@@ -161,6 +241,8 @@ const dayForDate=date=>{const d=new Date(date+'T12:00:00');return workoutDays[(d
 function getWorkoutLog(){ensureWorkoutState();if(!state.workoutLogs[workoutDate]){const day=dayForDate(workoutDate);state.workoutLogs[workoutDate]={day,notes:'',sets:{},title:state.workoutTemplates[day].title,exercises:clone(state.workoutTemplates[day].exercises)}}const log=state.workoutLogs[workoutDate];if(!Array.isArray(log.exercises)){const t=state.workoutTemplates[log.day]||state.workoutTemplates[dayForDate(workoutDate)];log.title=t.title;log.exercises=clone(t.exercises)}return log}
 function workoutPlan(){return getWorkoutLog()}
 function selectWorkoutDate(value){if(!/^\d{4}-\d{2}-\d{2}$/.test(value))return;workoutDate=value;editingWorkout=false;renderWorkouts()}
+function formatWorkoutDate(value){const d=new Date(value+'T12:00:00');return Number.isNaN(d.getTime())?value:new Intl.DateTimeFormat('en-US',{weekday:'short',month:'short',day:'numeric',year:'numeric'}).format(d)}
+function shiftWorkoutDate(days){const d=new Date(workoutDate+'T12:00:00');d.setDate(d.getDate()+days);selectWorkoutDate([d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-'))}
 function selectWorkoutDay(day){if(!workoutDays.includes(day))return;const log=getWorkoutLog();log.day=day;save();renderWorkouts()}
 function toggleWorkoutEdit(){editingWorkout=!editingWorkout;renderWorkouts()}
 function updateWorkoutTitle(value){getWorkoutLog().title=value;save();document.getElementById('workout-heading').textContent=value}
@@ -183,11 +265,31 @@ function applyImportedWorkout(data){
 function importPastedWorkout(){try{const data=parseWorkoutText(document.getElementById('workout-paste-text').value);if(applyImportedWorkout(data)){document.getElementById('workout-paste-text').value='';togglePasteWorkout(false);alert('Workout imported and saved to your planner.')}}catch(e){alert('Could not import workout: '+e.message)}}
 async function importWorkoutFile(input){const file=input.files?.[0];input.value='';if(!file)return;try{if(file.size>100000)throw Error('File is too large');if(applyImportedWorkout(parseWorkoutText(await file.text())))alert('Workout imported and saved.')}catch(e){alert('Could not import workout: '+e.message)}}
 
-function updateWorkoutSet(id,index,field,value){const log=getWorkoutLog();if(!log.sets[id])log.sets[id]=[];if(!log.sets[id][index])log.sets[id][index]={done:false};log.sets[id][index][field]=value;save();renderWorkoutCount();const btn=document.querySelector(`[data-set-exercise="${id}"][data-set-index="${index}"]`);if(btn){btn.classList.toggle('completed',!!value);btn.setAttribute('aria-pressed',String(!!value));btn.querySelector('.set-status').textContent=value?'✓ Done':'Tap to complete';}}
+function updateWorkoutSet(id,index,field,value){const log=getWorkoutLog();if(!log.sets[id])log.sets[id]=[];if(!log.sets[id][index])log.sets[id][index]={done:false};log.sets[id][index][field]=value;save();renderWorkoutCount();const btn=document.querySelector(`[data-set-exercise="${id}"][data-set-index="${index}"]`);if(btn){btn.classList.toggle('completed',!!value);btn.setAttribute('aria-pressed',String(!!value));btn.querySelector('.set-status').textContent=value?'✓':'';btn.setAttribute('aria-label',(value?'Mark':'Mark')+' set '+(index+1)+(value?' not completed':' complete'));}}
 function updateWorkoutNotes(value){getWorkoutLog().notes=value;save()}
-function renderWorkoutCount(){const log=getWorkoutLog();let total=0,done=0;for(const ex of log.exercises){for(let i=0;i<ex.sets;i++){total++;if(log.sets[ex.id]?.[i]?.done)done++}}document.getElementById('workout-count').textContent=`${done} of ${total} sets complete`;}
-function renderWorkouts(){const closedBlocks=new Set([...document.querySelectorAll(".workout-group:not([open])")].map(x=>x.dataset.block));ensureWorkoutState();document.getElementById('workout-date').value=workoutDate;const log=getWorkoutLog(),template=log;const select=document.getElementById('workout-day');select.innerHTML=workoutDays.map(d=>`<option value="${d}" ${d===log.day?'selected':''}>${d}</option>`).join('');document.getElementById('workout-heading').textContent=template.title;document.getElementById('workout-edit-button').textContent=editingWorkout?'Done editing':'Edit this workout';const editor=document.getElementById('workout-template-editor');editor.classList.toggle('hidden',!editingWorkout);editor.innerHTML=editingWorkout?`<div class="meal"><label>Workout title</label><input aria-label="Workout title" value="${esc(template.title)}" oninput="updateWorkoutTitle(this.value)" style="width:100%"></div>${template.exercises.map(ex=>`<div class="workout-edit"><input aria-label="Exercise name" value="${esc(ex.name)}" oninput="updateExercise('${ex.id}','name',this.value)"><label>Sets<input type="number" min="1" max="10" value="${ex.sets}" onchange="updateExercise('${ex.id}','sets',this.value)"></label><label>Reps/time<input value="${esc(ex.reps)}" oninput="updateExercise('${ex.id}','reps',this.value)"></label><label>Rest<input value="${esc(ex.rest)}" oninput="updateExercise('${ex.id}','rest',this.value)"></label><label>Block<select onchange="updateExercise('${ex.id}','block',this.value)">${['Cardio','Mobility','Lift','Core','Recovery'].map(b=>`<option ${b===ex.block?'selected':''}>${b}</option>`).join('')}</select></label><button class="danger" onclick="removeWorkoutExercise('${ex.id}')">Remove</button></div>`).join('')}<button onclick="addWorkoutExercise()">+ Add exercise</button>`:'';
-const blocks=['Cardio','Mobility','Lift','Core','Recovery'];document.getElementById('workout-exercises').innerHTML=blocks.map(block=>{const exs=template.exercises.filter(e=>e.block===block);if(!exs.length)return '';return `<details class="workout-group" data-block="${block}" ${closedBlocks.has(block)?'':'open'}><summary>${block} <small>${exs.length} exercise${exs.length===1?'':'s'}</small></summary>${exs.map(ex=>`<div class="workout-card"><div class="row"><strong>${esc(ex.name)}</strong><small>${ex.sets} × ${esc(ex.reps)} · Rest ${esc(ex.rest)}</small></div><div class="workout-set-list">${Array.from({length:ex.sets},(_,i)=>{const done=!!log.sets[ex.id]?.[i]?.done;return `<button type="button" class="set-check ${done?'completed':''}" data-set-exercise="${ex.id}" data-set-index="${i}" aria-pressed="${done}" onclick="updateWorkoutSet('${ex.id}',${i},'done',this.getAttribute('aria-pressed')!=='true')"><span>Set ${i+1}</span><span class="set-status">${done?'✓ Done':'○ Tap'}</span></button>`}).join('')}</div></div>`).join('')}`}).join('');document.getElementById('workout-notes').value=log.notes||'';renderWorkoutCount();}
+function renderWorkoutCount(){const log=getWorkoutLog();let total=0,done=0;const byBlock={};for(const ex of log.exercises){const group=byBlock[ex.block]||(byBlock[ex.block]={done:0,total:0});for(let i=0;i<ex.sets;i++){total++;group.total++;if(log.sets[ex.id]?.[i]?.done){done++;group.done++}}}document.getElementById('workout-count').textContent=`${done} / ${total} sets`;const pct=total?Math.round(100*done/total):0;document.getElementById('workout-progress-fill').style.width=pct+'%';document.querySelector('.workout-progress-track').setAttribute('aria-valuenow',String(pct));for(const el of document.querySelectorAll('[data-block-progress]')){const group=byBlock[el.dataset.blockProgress]||{done:0,total:0};el.textContent=`${group.done}/${group.total} sets`}}
+function renderWorkouts(){
+ const closedBlocks=new Set([...document.querySelectorAll('.workout-group:not([open])')].map(x=>x.dataset.block));
+ ensureWorkoutState();
+ document.getElementById('workout-date').value=workoutDate;
+ document.getElementById('workout-date-display').textContent=formatWorkoutDate(workoutDate);
+ const log=getWorkoutLog(),template=log;
+ const select=document.getElementById('workout-day');
+ select.innerHTML=workoutDays.map(d=>`<option value="${d}" ${d===log.day?'selected':''}>${d}</option>`).join('');
+ document.getElementById('workout-heading').textContent=template.title;
+ document.getElementById('workout-edit-button').textContent=editingWorkout?'Done editing':'Edit workout';
+ const editor=document.getElementById('workout-template-editor');
+ editor.classList.toggle('hidden',!editingWorkout);
+ editor.innerHTML=editingWorkout?`<div class="meal"><label>Workout title</label><input aria-label="Workout title" value="${esc(template.title)}" oninput="updateWorkoutTitle(this.value)" style="width:100%"></div>${template.exercises.map(ex=>`<div class="workout-edit"><input aria-label="Exercise name" value="${esc(ex.name)}" oninput="updateExercise('${ex.id}','name',this.value)"><label>Sets<input type="number" min="1" max="20" value="${ex.sets}" onchange="updateExercise('${ex.id}','sets',this.value)"></label><label>Reps/time<input value="${esc(ex.reps)}" oninput="updateExercise('${ex.id}','reps',this.value)"></label><label>Rest<input value="${esc(ex.rest)}" oninput="updateExercise('${ex.id}','rest',this.value)"></label><label>Block<select onchange="updateExercise('${ex.id}','block',this.value)">${['Cardio','Mobility','Lift','Core','Recovery'].map(b=>`<option ${b===ex.block?'selected':''}>${b}</option>`).join('')}</select></label><button class="danger" onclick="removeWorkoutExercise('${ex.id}')">Remove</button></div>`).join('')}<button onclick="addWorkoutExercise()">+ Add exercise</button>`:'';
+ const blocks=['Cardio','Mobility','Lift','Core','Recovery'];
+ document.getElementById('workout-exercises').innerHTML=blocks.map(block=>{
+  const exs=template.exercises.filter(e=>e.block===block);
+  if(!exs.length)return '';
+  return `<details class="workout-group" data-block="${block}" ${closedBlocks.has(block)?'':'open'}><summary><span>${block}</span><small data-block-progress="${block}"></small><span class="group-chevron" aria-hidden="true"></span></summary><div class="workout-exercise-list">${exs.map(ex=>`<article class="workout-exercise"><h3 class="exercise-name">${esc(ex.name)}</h3><div class="exercise-meta"><strong class="exercise-target">${ex.sets} × ${esc(ex.reps)}</strong><span class="exercise-rest">${ex.rest&&ex.rest!=='—'?'Rest: '+esc(ex.rest):'No rest specified'}</span></div><div class="workout-set-list">${Array.from({length:ex.sets},(_,i)=>{const done=!!log.sets[ex.id]?.[i]?.done;return `<button type="button" class="set-check ${done?'completed':''}" data-set-exercise="${ex.id}" data-set-index="${i}" aria-pressed="${done}" aria-label="${done?'Uncheck':'Complete'} ${esc(ex.name)}, set ${i+1}" onclick="updateWorkoutSet('${ex.id}',${i},'done',this.getAttribute('aria-pressed')!=='true')"><span>Set ${i+1}</span><span class="set-status" aria-hidden="true">${done?'✓':''}</span></button>`}).join('')}</div></article>`).join('')}</div></details>`
+ }).join('');
+ document.getElementById('workout-notes').value=log.notes||'';
+ renderWorkoutCount();
+}
 function renderWorkoutHistory(){ensureWorkoutState();const rows=Object.entries(state.workoutLogs).sort(([a],[b])=>b.localeCompare(a)).slice(0,90);document.getElementById('history-count').textContent=`${rows.length} sessions`;document.getElementById('workout-history').innerHTML=rows.length?rows.map(([date,log])=>{const template=log;const done=Object.values(log.sets||{}).flat().filter(x=>x?.done).length;return `<button class="history-row" onclick="selectWorkoutDate('${date}');showTab('workouts')"><span><strong>${esc(date)}</strong><small>${esc(template?.title||log.day)} · ${done} completed sets</small></span><span>View →</span></button>`}).join(''):'<p class="muted">Your logged workouts will appear here.</p>'}
 function copyWorkoutSummary(){const log=getWorkoutLog(),lines=[`Workout ${workoutDate} — ${log.title}`];for(const ex of log.exercises){const completed=Array.from({length:ex.sets},(_,i)=>!!log.sets[ex.id]?.[i]?.done).filter(Boolean).length;lines.push(`${ex.block}: ${ex.name} — ${completed}/${ex.sets} sets completed (target ${ex.reps}, rest ${ex.rest})`)}lines.push('Notes: '+(log.notes||'None'));copy(lines.join('\n'))}
 ensureWorkoutState();
