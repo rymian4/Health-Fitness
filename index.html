@@ -297,6 +297,34 @@ input[type=checkbox]{accent-color:var(--accent)}
 #menu .meal .meal-label-row button{border:0;padding:4px 7px;background:transparent;color:var(--muted);font-size:11px}
 #menu .meal .meal-label-row button:hover{color:var(--accent-text);background:var(--accent-soft)}
 @media(max-width:600px){.nutrition-import-toolbar{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.nutrition-import-toolbar>button{font-size:12px;padding:9px 6px;min-width:0}.nutrition-import-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.nutrition-import-actions>*:first-child{grid-column:1/-1}.nutrition-import-actions>*{width:100%;text-align:center;padding:9px 6px}.nutrition-footer{gap:7px}.nutrition-footer button{font-size:12px}#menu .meal textarea{font-size:16px}}
+
+/* In-session exercise editing: drag handles, individual remove buttons and section-level add. */
+.workout-organize-help{font-size:12px;color:var(--muted);line-height:1.45;margin:2px 0 12px}
+.exercise-heading{display:flex;align-items:flex-start;gap:7px;min-width:0;margin:0 0 5px}
+.exercise-heading .exercise-name{flex:1;min-width:0;margin:2px 0 0}
+.exercise-handle,.exercise-remove{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;border:1px solid transparent;border-radius:8px;background:transparent;box-shadow:none;touch-action:none;user-select:none;-webkit-user-select:none}
+.exercise-handle{cursor:grab;color:var(--muted);font-size:21px;line-height:1;min-width:31px;height:34px;padding:2px 5px;margin-left:-5px;letter-spacing:-5px;text-indent:-4px}
+.exercise-handle:active{cursor:grabbing}
+.exercise-handle:hover,.exercise-handle:focus-visible{background:var(--accent-soft);border-color:var(--accent-border);color:var(--accent-text)}
+.exercise-remove{cursor:pointer;color:var(--muted);font-size:22px;font-weight:400;line-height:1;min-width:34px;height:34px;padding:0 6px;margin-right:-5px}
+.exercise-remove:hover,.exercise-remove:focus-visible{color:var(--danger);background:var(--subtle-surface);border-color:var(--danger-border)}
+.workout-add-area{border-top:1px dashed var(--border);padding:11px 11px 13px;margin:0}
+.workout-add-button{width:100%;border:1px dashed var(--accent-border);background:var(--subtle-surface);color:var(--accent-text);min-height:41px;font-size:13px;text-align:center;font-weight:750}
+.workout-add-button:hover{background:var(--accent-soft)}
+.workout-add-form{margin:10px 0 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;background:var(--subtle-surface);border:1px solid var(--border);padding:12px;border-radius:11px}
+.workout-add-form[hidden]{display:none!important}
+.workout-add-form label{font-size:11px;color:var(--muted);font-weight:750;display:flex;flex-direction:column;gap:4px;min-width:0}
+.workout-add-form label.full{grid-column:1/-1}
+.workout-add-form input{width:100%;min-width:0;font-size:14px;max-width:100%}
+.workout-add-form-actions{grid-column:1/-1;display:flex;gap:8px;justify-content:flex-end}
+.workout-add-form-actions button{min-height:40px}
+.workout-group>summary.is-drop-group,.workout-add-area.is-drop-group{background:var(--accent-soft);outline:2px dashed var(--accent);outline-offset:-3px}
+.workout-exercise.is-drop-before{box-shadow:inset 0 3px 0 var(--accent)}
+.workout-exercise.is-drop-after{box-shadow:inset 0 -3px 0 var(--accent)}
+.workout-exercise.is-drag-source{opacity:.35}
+.exercise-drag-ghost{position:fixed;z-index:1200;pointer-events:none;user-select:none;width:min(280px,75vw);padding:12px 14px;color:var(--ink);font-size:14px;font-weight:750;background:var(--surface);border:2px solid var(--accent);border-radius:12px;box-shadow:0 14px 38px var(--shadow),0 8px 28px #0002;white-space:normal;overflow-wrap:anywhere}
+@media(max-width:600px){.workout-organize-help{font-size:11px}.exercise-heading{gap:5px}.exercise-handle{min-width:28px;height:36px}.exercise-remove{min-width:34px;height:36px}.workout-add-area{padding:9px 8px 11px}.workout-add-form{padding:10px;gap:8px}.workout-add-form input{font-size:16px}}
+@media print{.exercise-handle,.exercise-remove,.workout-add-area,.workout-organize-help,.exercise-drag-ghost{display:none!important}}
 </style></head><body><header><div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#b3dbc3">TRAINING & NUTRITION</div><h1>Health & Fitness Hub</h1><p>Plan meals, track workouts, and stay consistent.</p></header><main class="wrap"><section class="panel" id="cloud-panel"><div class="sync-bar"><div class="sync-heading"><span class="sync-dot" aria-hidden="true"></span><div><strong>Cloud sync</strong><p class="muted" id="sync-status">Sign in to link your planner to Firebase.</p></div></div><div class="sync-actions"><button class="primary" id="sign-in">Sign in with Google</button><details id="theme-picker" class="theme-picker"><summary aria-label="Choose color theme">◐ Theme</summary><div class="theme-menu"><h3>Appearance</h3><p>Choose your Health & Fitness Hub color theme.</p><div class="theme-grid">
 <button type="button" class="theme-option" data-theme-choice="slate" onclick="chooseFitnessTheme('slate')"><span class="theme-swatch" style="--swatch:#435469"></span>Slate</button>
 <button type="button" class="theme-option" data-theme-choice="ocean" onclick="chooseFitnessTheme('ocean')"><span class="theme-swatch" style="--swatch:#245c9c"></span>Ocean</button>
@@ -323,6 +351,7 @@ input[type=checkbox]{accent-color:var(--accent)}
 <div id="workout-paste-panel" class="meal hidden"><label for="workout-paste-text">Paste the workout JSON from ChatGPT</label><textarea id="workout-paste-text" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder='{"date":"2026-11-16","title":"Upper body","exercises":[...]}'></textarea><div class="row"><button class="primary" type="button" onclick="importPastedWorkout()">Import pasted workout</button><button type="button" onclick="togglePasteWorkout(false)">Cancel</button></div><small>Importing replaces the selected date's workout and completed sets after you confirm.</small></div>
 <div class="workout-progress-track" role="progressbar" aria-label="Workout set completion" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div id="workout-progress-fill"></div></div>
 <div id="workout-template-editor" class="hidden"></div>
+<p class="workout-organize-help no-print">Drag <strong>⠿</strong> to reorder or move exercises between sections. Tap <strong>×</strong> to remove just one exercise.</p>
 <div id="workout-exercises"></div>
 <div class="workout-notes"><label for="workout-notes">Session notes / feedback</label><textarea id="workout-notes" placeholder="Energy, cardio, progress, adjustments..." oninput="updateWorkoutNotes(this.value)"></textarea></div>
 <div class="workout-bottom-actions no-print">
@@ -332,7 +361,7 @@ input[type=checkbox]{accent-color:var(--accent)}
   </div>
   <div class="workout-secondary-actions">
     <button type="button" onclick="copyWorkoutSummary()">Copy summary for ChatGPT</button>
-    <button type="button" class="danger workout-remove-button" onclick="removeWorkoutForDate()">Remove workout</button>
+    
   </div>
 </div>
 </section>
@@ -614,7 +643,7 @@ let workoutDate=localDate(),editingWorkout=false;
 const dayForDate=date=>{const d=new Date(date+'T12:00:00');return workoutDays[(d.getDay()+6)%7]};
 function getWorkoutLog(){ensureWorkoutState();if(state.workoutRemovedDates[workoutDate])return null;if(!state.workoutLogs[workoutDate]){const day=dayForDate(workoutDate);const template=dailyTemplate(day);state.workoutLogs[workoutDate]={day,notes:'',sets:{},title:template.title,exercises:clone(template.exercises)}}const log=state.workoutLogs[workoutDate];if(!Array.isArray(log.exercises)){const t=state.workoutTemplates[log.day]||state.workoutTemplates[dayForDate(workoutDate)];log.title=t.title;log.exercises=clone(t.exercises)}return log}
 function workoutPlan(){return getWorkoutLog()}
-function selectWorkoutDate(value){if(!/^\d{4}-\d{2}-\d{2}$/.test(value))return;workoutDate=value;editingWorkout=false;renderWorkouts()}
+function selectWorkoutDate(value){if(!/^\d{4}-\d{2}-\d{2}$/.test(value))return;workoutDate=value;editingWorkout=false;addingExerciseIn=null;renderWorkouts()}
 function formatWorkoutDate(value){const d=new Date(value+'T12:00:00');return Number.isNaN(d.getTime())?value:new Intl.DateTimeFormat('en-US',{weekday:'short',month:'short',day:'numeric',year:'numeric'}).format(d)}
 function shiftWorkoutDate(days){const d=new Date(workoutDate+'T12:00:00');d.setDate(d.getDate()+days);selectWorkoutDate([d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-'))}
 function selectWorkoutDay(day){if(!workoutDays.includes(day))return;const log=getWorkoutLog();log.day=day;save();renderWorkouts()}
@@ -633,7 +662,7 @@ function removeWorkoutForDate(){
  const label=formatWorkoutDate(workoutDate);
  if(!confirm('Remove the workout for '+label+'?\n\nThis deletes its exercise plan, checked sets, and session notes from your tracker and history. You can paste a new workout or restore the regular daily template later.'))return;
  ensureWorkoutState();delete state.workoutLogs[workoutDate];state.workoutRemovedDates[workoutDate]=true;
- save();editingWorkout=false;togglePasteWorkout(false);renderWorkouts();renderWorkoutHistory();
+ save();editingWorkout=false;addingExerciseIn=null;togglePasteWorkout(false);renderWorkouts();renderWorkoutHistory();
 }
 function restoreWorkoutForDate(){
  ensureWorkoutState();if(!state.workoutRemovedDates[workoutDate])return;
@@ -643,8 +672,143 @@ function restoreWorkoutForDate(){
 function toggleWorkoutEdit(){if(!getWorkoutLog())return;editingWorkout=!editingWorkout;renderWorkouts()}
 function updateWorkoutTitle(value){getWorkoutLog().title=value;save();document.getElementById('workout-heading').textContent=value}
 function updateExercise(id,field,value){const log=getWorkoutLog(),ex=log.exercises.find(x=>x.id===id);if(!ex)return;ex[field]=field==='sets'?Math.max(1,Math.min(20,Number(value)||1)):value;save();if(field==='sets'||field==='block')renderWorkouts()}
-function addWorkoutExercise(){getWorkoutLog().exercises.push({id:crypto.randomUUID(),name:'New exercise',sets:3,reps:'8–12',rest:'60 sec',block:'Lift'});save();renderWorkouts()}
-function removeWorkoutExercise(id){const log=getWorkoutLog();log.exercises=log.exercises.filter(e=>e.id!==id);delete log.sets[id];save();renderWorkouts()}
+const WORKOUT_BLOCKS=['Cardio','Mobility','Lift','Core','Recovery'];
+const WORKOUT_ADD_DEFAULTS={Cardio:{sets:1,reps:'10 min',rest:'—'},Mobility:{sets:1,reps:'5 min · your usual routine',rest:'—'},Lift:{sets:3,reps:'8–12',rest:'60 sec'},Core:{sets:1,reps:'12',rest:'30 sec'},Recovery:{sets:1,reps:'10 min',rest:'—'}};
+let addingExerciseIn=null;
+function insertExerciseAtBlockEnd(log,ex,block){
+ const index=log.exercises.reduce((last,e,i)=>e.block===block?i+1:last,-1);
+ const after=index<0?log.exercises.findIndex(e=>WORKOUT_BLOCKS.indexOf(e.block)>WORKOUT_BLOCKS.indexOf(block)):index;
+ log.exercises.splice(after<0?log.exercises.length:after,0,ex);
+}
+function toggleAddWorkoutExercise(block){
+ if(!WORKOUT_BLOCKS.includes(block)||!getWorkoutLog())return;
+ addingExerciseIn=addingExerciseIn===block?null:block;
+ renderWorkouts();
+ if(addingExerciseIn)document.querySelector('.workout-group[data-block="'+block+'"] .add-exercise-name')?.focus();
+}
+function addWorkoutExercise(block='Lift'){
+ const log=getWorkoutLog();if(!log||!WORKOUT_BLOCKS.includes(block))return;
+ const group=document.querySelector('.workout-group[data-block="'+block+'"]');
+ const form=group?.querySelector('.workout-add-form');if(!form)return;
+ const name=form.querySelector('.add-exercise-name').value.trim();
+ const n=Number(form.querySelector('.add-exercise-sets').value);
+ const reps=form.querySelector('.add-exercise-reps').value.trim();
+ const rest=form.querySelector('.add-exercise-rest').value.trim();
+ if(!name){form.querySelector('.add-exercise-name').focus();return}
+ if(name.length>120||!Number.isInteger(n)||n<1||n>20||!reps||!rest){alert('Enter an exercise name (up to 120 characters), 1–20 sets, reps/time and rest.');return}
+ insertExerciseAtBlockEnd(log,{id:crypto.randomUUID(),name,sets:n,reps:reps.slice(0,80),rest:rest.slice(0,80),block},block);
+ addingExerciseIn=null;save();renderWorkouts();renderWorkoutHistory();
+}
+function removeWorkoutExercise(id){
+ const log=getWorkoutLog();if(!log)return;
+ const ex=log.exercises.find(e=>e.id===id);if(!ex)return;
+ const checked=(log.sets?.[id]||[]).filter(set=>set?.done).length;
+ const warning=checked?'\n\nThis will also delete its '+checked+' completed set'+(checked===1?'':'s')+'.':'';
+ if(!confirm('Remove "'+ex.name+'" from '+formatWorkoutDate(workoutDate)+'?'+warning+'\n\nAll other exercises and their checkmarks will stay.'))return;
+ log.exercises=log.exercises.filter(e=>e.id!==id);
+ delete log.sets[id];save();renderWorkouts();renderWorkoutHistory();
+}
+function moveWorkoutExerciseTo(id,target){
+ const log=getWorkoutLog();if(!log||!target||!WORKOUT_BLOCKS.includes(target.block))return false;
+ const exercise=log.exercises.find(ex=>ex.id===id);if(!exercise)return false;
+ if(target.id===id)return false;
+ const items=log.exercises.filter(ex=>ex.id!==id);
+ let index=-1;
+ if(target.id){index=items.findIndex(ex=>ex.id===target.id);if(index<0)return false;index+=target.after?1:0}
+ else {index=items.reduce((last,e,i)=>e.block===target.block?i+1:last,-1);
+   if(index<0)index=items.findIndex(e=>WORKOUT_BLOCKS.indexOf(e.block)>WORKOUT_BLOCKS.indexOf(target.block));
+   if(index<0)index=items.length;
+ }
+ const oldBlock=exercise.block;
+ exercise.block=target.block;
+ items.splice(index,0,exercise);
+ if(items.every((item,i)=>item===log.exercises[i])&&oldBlock===target.block)return false;
+ if(oldBlock!==target.block)document.querySelector('.workout-group[data-block="'+target.block+'"]')?.setAttribute('open','');
+ log.exercises=items;save();renderWorkouts();renderWorkoutHistory();return true;
+}
+function moveExerciseWithKeys(event,id){
+ const direction=event.key;if(!['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(direction))return;
+ event.preventDefault();event.stopPropagation();
+ const log=getWorkoutLog(),ex=log?.exercises.find(e=>e.id===id);if(!ex)return;
+ const group=log.exercises.filter(e=>e.block===ex.block),index=group.findIndex(e=>e.id===id);
+ let target=null;
+ if(direction==='ArrowUp'&&index>0)target={block:ex.block,id:group[index-1].id,after:false};
+ if(direction==='ArrowDown'&&index<group.length-1)target={block:ex.block,id:group[index+1].id,after:true};
+ const delta=direction==='ArrowLeft'?-1:direction==='ArrowRight'?1:0;
+ const blockIndex=WORKOUT_BLOCKS.indexOf(ex.block)+delta;
+ if(delta&&blockIndex>=0&&blockIndex<WORKOUT_BLOCKS.length)target={block:WORKOUT_BLOCKS[blockIndex]};
+ if(target&&moveWorkoutExerciseTo(id,target)){
+  document.querySelector('.workout-exercise[data-exercise-id="'+id+'"] .exercise-handle')?.focus();
+ }
+}
+let activeExerciseDrag=null;
+function clearExerciseDropTarget(){document.querySelectorAll('.is-drop-before,.is-drop-after,.is-drop-group').forEach(el=>el.classList.remove('is-drop-before','is-drop-after','is-drop-group'))}
+function chooseExerciseDropTarget(x,y,sourceID){
+ clearExerciseDropTarget();
+ const under=document.elementFromPoint(x,y);if(!under)return null;
+ const row=under.closest('.workout-exercise');
+ if(row&&row.dataset.exerciseId===sourceID)return null;
+ if(row){
+  const block=row.closest('.workout-group')?.dataset.block;
+  const after=y>row.getBoundingClientRect().top+row.getBoundingClientRect().height/2;
+  row.classList.add(after?'is-drop-after':'is-drop-before');
+  return {id:row.dataset.exerciseId,after,block};
+ }
+ const group=under.closest('.workout-group');
+ if(group){
+  const label=group.querySelector('summary');
+  const area=group.querySelector('.workout-add-area');
+  (under.closest('.workout-add-area')||label)?.classList.add('is-drop-group');
+  return {block:group.dataset.block};
+ }
+ return null;
+}
+function beginExerciseDrag(event,id){
+ if(event.button!==undefined&&event.button!==0)return;
+ if(activeExerciseDrag)return;
+ const row=event.currentTarget.closest('.workout-exercise');if(!row||!getWorkoutLog())return;
+ event.preventDefault();
+ const drag={id,pointerId:event.pointerId,handle:event.currentTarget,source:row,startX:event.clientX,startY:event.clientY,x:event.clientX,y:event.clientY,started:false,target:null,ghost:null,raf:0};
+ activeExerciseDrag=drag;
+ try{drag.handle.setPointerCapture(event.pointerId)}catch{}
+ window.addEventListener('pointermove',onExerciseDragMove,{passive:false});
+ window.addEventListener('pointerup',endExerciseDrag);
+ window.addEventListener('pointercancel',cancelExerciseDrag);
+}
+function onExerciseDragMove(event){
+ const d=activeExerciseDrag;if(!d||event.pointerId!==d.pointerId)return;
+ d.x=event.clientX;d.y=event.clientY;
+ if(!d.started&&Math.hypot(d.x-d.startX,d.y-d.startY)>6){
+  d.started=true;d.source.classList.add('is-drag-source');
+  d.ghost=document.createElement('div');d.ghost.className='exercise-drag-ghost';
+  const label=d.source.querySelector('.exercise-name')?.textContent||'Exercise';d.ghost.textContent='⠿  '+label;
+  document.body.appendChild(d.ghost);
+  d.raf=requestAnimationFrame(autoScrollExerciseDrag);
+ }
+ if(!d.started)return;
+ event.preventDefault();
+ d.ghost.style.left=Math.max(8,Math.min(innerWidth-290,d.x+12))+'px';
+ d.ghost.style.top=Math.max(6,Math.min(innerHeight-75,d.y-30))+'px';
+ d.target=chooseExerciseDropTarget(d.x,d.y,d.id);
+}
+function autoScrollExerciseDrag(){
+ const d=activeExerciseDrag;if(!d||!d.started)return;
+ const edge=65;const speed=d.y<edge?-Math.min(15,(edge-d.y)/3):d.y>innerHeight-edge?Math.min(15,(d.y-(innerHeight-edge))/3):0;
+ if(speed){window.scrollBy(0,speed);d.target=chooseExerciseDropTarget(d.x,d.y,d.id)}
+ d.raf=requestAnimationFrame(autoScrollExerciseDrag);
+}
+function finishExerciseDrag(commit){
+ const d=activeExerciseDrag;if(!d)return;
+ window.removeEventListener('pointermove',onExerciseDragMove);window.removeEventListener('pointerup',endExerciseDrag);window.removeEventListener('pointercancel',cancelExerciseDrag);
+ if(d.raf)cancelAnimationFrame(d.raf);
+ try{if(d.handle.hasPointerCapture(d.pointerId))d.handle.releasePointerCapture(d.pointerId)}catch{}
+ if(d.ghost)d.ghost.remove();d.source.classList.remove('is-drag-source');
+ const target=commit&&d.started?d.target:null;
+ activeExerciseDrag=null;clearExerciseDropTarget();
+ if(target)moveWorkoutExerciseTo(d.id,target);
+}
+function endExerciseDrag(event){if(activeExerciseDrag&&event.pointerId===activeExerciseDrag.pointerId)finishExerciseDrag(true)}
+function cancelExerciseDrag(event){if(activeExerciseDrag&&event.pointerId===activeExerciseDrag.pointerId)finishExerciseDrag(false)}
 function duplicateWorkout(){const day=document.getElementById('workout-day').value;const template=state.workoutTemplates[day];if(!confirm('Replace the workout for '+workoutDate+' with the '+day+' starting template? Logged sets for this date will be cleared.'))return;const log=getWorkoutLog();log.title=template.title;log.exercises=clone(template.exercises).map(e=>({...e,id:crypto.randomUUID()}));log.sets={};save();renderWorkouts()}
 function downloadWorkoutTemplate(){const sample={date:workoutDate,title:'Upper body strength',exercises:[{block:'Cardio',name:'Bike warm-up',sets:1,reps:'7 min',rest:'—'},{block:'Lift',name:'Incline dumbbell press',sets:3,reps:'8–10',rest:'90 sec'},{block:'Core',name:'Bicycle crunches',sets:3,reps:'20',rest:'45 sec'}]};download('fitness-hub-workout-example.json',JSON.stringify(sample,null,2))}
 function togglePasteWorkout(force){const panel=document.getElementById('workout-paste-panel');const show=typeof force==='boolean'?force:panel.classList.contains('hidden');panel.classList.toggle('hidden',!show);if(show)document.getElementById('workout-paste-text').focus()}
@@ -656,7 +820,7 @@ function applyImportedWorkout(data){
  const exercises=data.exercises.map((e,i)=>{if(!e||typeof e.name!=='string'||!e.name.trim()||e.name.length>120)throw Error('Invalid exercise name at '+(i+1));const sets=Number(e.sets);if(!Number.isInteger(sets)||sets<1||sets>20)throw Error('Sets must be 1–20 for '+e.name);return {id:crypto.randomUUID(),name:e.name.trim(),sets,reps:String(e.reps??'').slice(0,80),rest:String(e.rest??'').slice(0,80),block:allowed.includes(e.block)?e.block:'Lift'}});
  const date=data.date||workoutDate;
  if(!confirm('Import "'+String(data.title||'Workout').slice(0,80)+'" for '+date+'? This replaces that date’s plan and logged sets.'))return false;
- workoutDate=date;ensureWorkoutState();delete state.workoutRemovedDates[date];const log=getWorkoutLog();log.title=String(data.title||'Custom workout').slice(0,120);log.exercises=exercises;log.sets={};log.notes=String(data.notes||'').slice(0,2000);delete log.status;delete log.finishedAt;save();editingWorkout=false;showTab('workouts');renderWorkouts();renderWorkoutHistory();return true;
+ workoutDate=date;ensureWorkoutState();delete state.workoutRemovedDates[date];const log=getWorkoutLog();log.title=String(data.title||'Custom workout').slice(0,120);log.exercises=exercises;log.sets={};log.notes=String(data.notes||'').slice(0,2000);delete log.status;delete log.finishedAt;save();editingWorkout=false;addingExerciseIn=null;showTab('workouts');renderWorkouts();renderWorkoutHistory();return true;
 }
 function importPastedWorkout(){try{const data=parseWorkoutText(document.getElementById('workout-paste-text').value);if(applyImportedWorkout(data)){document.getElementById('workout-paste-text').value='';togglePasteWorkout(false);alert('Workout imported and saved to your planner.')}}catch(e){alert('Could not import workout: '+e.message)}}
 async function importWorkoutFile(input){const file=input.files?.[0];input.value='';if(!file)return;try{if(file.size>100000)throw Error('File is too large');if(applyImportedWorkout(parseWorkoutText(await file.text())))alert('Workout imported and saved.')}catch(e){alert('Could not import workout: '+e.message)}}
@@ -670,7 +834,9 @@ function renderWorkoutCount(){const log=getWorkoutLog();let total=0,done=0;const
  const help=document.querySelector('.workout-action-help');help.textContent=finished?'Workout saved as finished. Reopen it to continue the session or adjust completed sets.':'Save this session as finished—even if you didn’t complete every set. Checked sets and notes are preserved.';
  const pct=total?Math.round(100*done/total):0;document.getElementById('workout-progress-fill').style.width=pct+'%';document.querySelector('.workout-progress-track').setAttribute('aria-valuenow',String(pct));for(const el of document.querySelectorAll('[data-block-progress]')){const group=byBlock[el.dataset.blockProgress]||{done:0,total:0};el.textContent=`${group.done}/${group.total} sets`}}
 function renderWorkouts(){
- const closedBlocks=new Set([...document.querySelectorAll('.workout-group:not([open])')].map(x=>x.dataset.block));
+ const existingGroups=[...document.querySelectorAll('.workout-group')];
+ const closedBlocks=new Set(existingGroups.filter(x=>!x.open).map(x=>x.dataset.block));
+ const firstBlockRender=existingGroups.length===0;
  ensureWorkoutState();
  document.getElementById('workout-date').value=workoutDate;
  document.getElementById('workout-date-display').textContent=formatWorkoutDate(workoutDate);
@@ -696,12 +862,13 @@ function renderWorkouts(){
  document.getElementById('workout-edit-button').textContent=editingWorkout?'Done editing':'Edit workout';
  const editor=document.getElementById('workout-template-editor');
  editor.classList.toggle('hidden',!editingWorkout);
- editor.innerHTML=editingWorkout?`<div class="meal"><label>Workout title</label><input aria-label="Workout title" value="${esc(template.title)}" oninput="updateWorkoutTitle(this.value)" style="width:100%"></div>${template.exercises.map(ex=>`<div class="workout-edit"><input aria-label="Exercise name" value="${esc(ex.name)}" oninput="updateExercise('${ex.id}','name',this.value)"><label>Sets<input type="number" min="1" max="20" value="${ex.sets}" onchange="updateExercise('${ex.id}','sets',this.value)"></label><label>Reps/time<input value="${esc(ex.reps)}" oninput="updateExercise('${ex.id}','reps',this.value)"></label><label>Rest<input value="${esc(ex.rest)}" oninput="updateExercise('${ex.id}','rest',this.value)"></label><label>Block<select onchange="updateExercise('${ex.id}','block',this.value)">${['Cardio','Mobility','Lift','Core','Recovery'].map(b=>`<option ${b===ex.block?'selected':''}>${b}</option>`).join('')}</select></label><button class="danger" onclick="removeWorkoutExercise('${ex.id}')">Remove</button></div>`).join('')}<button onclick="addWorkoutExercise()">+ Add exercise</button>`:'';
- const blocks=['Cardio','Mobility','Lift','Core','Recovery'];
+ editor.innerHTML=editingWorkout?`<div class="meal"><label>Workout title</label><input aria-label="Workout title" value="${esc(template.title)}" oninput="updateWorkoutTitle(this.value)" style="width:100%"></div>${template.exercises.map(ex=>`<div class="workout-edit"><input aria-label="Exercise name" value="${esc(ex.name)}" oninput="updateExercise('${ex.id}','name',this.value)"><label>Sets<input type="number" min="1" max="20" value="${ex.sets}" onchange="updateExercise('${ex.id}','sets',this.value)"></label><label>Reps/time<input value="${esc(ex.reps)}" oninput="updateExercise('${ex.id}','reps',this.value)"></label><label>Rest<input value="${esc(ex.rest)}" oninput="updateExercise('${ex.id}','rest',this.value)"></label><label>Block<select onchange="updateExercise('${ex.id}','block',this.value)">${['Cardio','Mobility','Lift','Core','Recovery'].map(b=>`<option ${b===ex.block?'selected':''}>${b}</option>`).join('')}</select></label></div>`).join('')}`:'';
+ const blocks=WORKOUT_BLOCKS;
  document.getElementById('workout-exercises').innerHTML=blocks.map(block=>{
   const exs=template.exercises.filter(e=>e.block===block);
-  if(!exs.length)return '';
-  return `<details class="workout-group" data-block="${block}" ${closedBlocks.has(block)?'':'open'}><summary><span>${block}</span><small data-block-progress="${block}"></small><span class="group-chevron" aria-hidden="true"></span></summary><div class="workout-exercise-list">${exs.map(ex=>`<article class="workout-exercise"><h3 class="exercise-name">${esc(ex.name)}</h3><div class="exercise-meta"><strong class="exercise-target">${ex.sets} × ${esc(ex.reps)}</strong><span class="exercise-rest">${ex.rest&&ex.rest!=='—'?'Rest: '+esc(ex.rest):'No rest specified'}</span></div><div class="workout-set-list">${Array.from({length:ex.sets},(_,i)=>{const done=!!log.sets[ex.id]?.[i]?.done;return `<button type="button" class="set-check ${done?'completed':''}" data-set-exercise="${ex.id}" data-set-index="${i}" aria-pressed="${done}" aria-label="${done?'Uncheck':'Complete'} ${esc(ex.name)}, set ${i+1}" onclick="updateWorkoutSet('${ex.id}',${i},'done',this.getAttribute('aria-pressed')!=='true')"><span>Set ${i+1}</span><span class="set-status" aria-hidden="true">${done?'✓':''}</span></button>`}).join('')}</div></article>`).join('')}</div></details>`
+  const isOpen=addingExerciseIn===block||(!closedBlocks.has(block)&&(firstBlockRender?exs.length>0:true));
+  const defaults=WORKOUT_ADD_DEFAULTS[block];
+  return `<details class="workout-group" data-block="${block}" ${isOpen?'open':''}><summary><span>${block}</span><small data-block-progress="${block}"></small><span class="group-chevron" aria-hidden="true"></span></summary><div class="workout-exercise-list">${exs.map(ex=>`<article class="workout-exercise" data-exercise-id="${esc(ex.id)}"><div class="exercise-heading"><button type="button" class="exercise-handle no-print" aria-label="Move ${esc(ex.name)}. Drag, or use arrow keys to reposition." title="Drag to move; arrow keys also work" onpointerdown="beginExerciseDrag(event,'${ex.id}')" onkeydown="moveExerciseWithKeys(event,'${ex.id}')">⠿</button><h3 class="exercise-name">${esc(ex.name)}</h3><button type="button" class="exercise-remove no-print" aria-label="Remove ${esc(ex.name)}" title="Remove exercise" onclick="removeWorkoutExercise('${ex.id}')">×</button></div><div class="exercise-meta"><strong class="exercise-target">${ex.sets} × ${esc(ex.reps)}</strong><span class="exercise-rest">${ex.rest&&ex.rest!=='—'?'Rest: '+esc(ex.rest):'No rest specified'}</span></div><div class="workout-set-list">${Array.from({length:ex.sets},(_,i)=>{const done=!!log.sets[ex.id]?.[i]?.done;return `<button type="button" class="set-check ${done?'completed':''}" data-set-exercise="${ex.id}" data-set-index="${i}" aria-pressed="${done}" aria-label="${done?'Uncheck':'Complete'} ${esc(ex.name)}, set ${i+1}" onclick="updateWorkoutSet('${ex.id}',${i},'done',this.getAttribute('aria-pressed')!=='true')"><span>Set ${i+1}</span><span class="set-status" aria-hidden="true">${done?'✓':''}</span></button>`}).join('')}</div></article>`).join('')}</div><div class="workout-add-area no-print"><button type="button" class="workout-add-button" onclick="toggleAddWorkoutExercise('${block}')">${addingExerciseIn===block?'− Cancel adding':'+ Add '+(block==='Lift'?'lifting exercise':block.toLowerCase()+' exercise')}</button><form class="workout-add-form" ${addingExerciseIn===block?'':'hidden'} onsubmit="event.preventDefault();addWorkoutExercise('${block}')"><label class="full">Exercise name<input class="add-exercise-name" type="text" maxlength="120" placeholder="Exercise name" autocomplete="off" required></label><label>Sets<input class="add-exercise-sets" type="number" min="1" max="20" value="${defaults.sets}" required></label><label>Reps / time<input class="add-exercise-reps" type="text" value="${esc(defaults.reps)}" required></label><label>Rest<input class="add-exercise-rest" type="text" value="${esc(defaults.rest)}" required></label><div class="workout-add-form-actions"><button type="button" onclick="toggleAddWorkoutExercise('${block}')">Cancel</button><button class="primary" type="submit">Add exercise</button></div></form></div></details>`;
  }).join('');
  document.getElementById('workout-notes').value=log.notes||'';
  renderWorkoutCount();
