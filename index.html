@@ -252,6 +252,51 @@ input[type=checkbox]{accent-color:var(--accent)}
  .workout-exercise{padding:12px 0 13px}
  .workout-session-head{align-items:flex-start}
 }
+
+/* Workout session actions: explicitly finish, reopen or clear one day's workout. */
+.workout-status{display:flex;align-items:center;min-height:24px;gap:7px;margin:-2px 0 10px;font-size:12px;font-weight:700;color:var(--muted)}
+.workout-status .workout-status-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--warning);flex:0 0 7px}
+.workout-status.is-finished{color:var(--positive-text)}
+.workout-status.is-finished .workout-status-dot{background:var(--positive)}
+.workout-bottom-actions{display:flex;flex-direction:column;align-items:stretch;justify-content:initial;gap:13px;border-top:1px solid var(--border);padding-top:17px;margin-top:16px}
+.workout-finish-area{display:flex;flex-direction:column;align-items:stretch;gap:5px}
+.workout-finish-button{width:100%;min-height:50px;font-size:15px;border-radius:10px}
+.workout-finish-button.is-reopen{color:var(--accent-text);background:var(--accent-soft);border-color:var(--accent-border)}
+.workout-finish-button.is-reopen:hover{background:var(--selected-bg)}
+.workout-action-help{font-size:12px;color:var(--muted);line-height:1.4;margin:0}
+.workout-secondary-actions{display:flex;justify-content:space-between;align-items:center;gap:9px;flex-wrap:wrap}
+.workout-secondary-actions button{font-size:12px;min-height:41px}
+.workout-secondary-actions .workout-remove-button{color:var(--danger);border-color:var(--danger-border);margin-left:auto;background:var(--surface)}
+.workout-secondary-actions .workout-remove-button:hover{background:var(--subtle-surface)}
+.workout-empty{border:1px dashed var(--accent-border);border-radius:13px;padding:28px 18px;text-align:center;background:var(--subtle-surface);margin:16px 0}
+.workout-empty-symbol{font-size:26px;color:var(--muted);margin:0 0 7px}
+.workout-empty h3{font-size:19px;color:var(--ink);margin:0 0 6px}
+.workout-empty p{font-size:13px;color:var(--muted);margin:0 auto 17px;line-height:1.5;max-width:380px}
+.workout-empty button{min-height:45px}
+#workouts.workout-removed .workout-progress-track,#workouts.workout-removed .workout-notes,#workouts.workout-removed .workout-bottom-actions,#workouts.workout-removed #workout-edit-button{display:none!important}
+@media(max-width:600px){.workout-secondary-actions{display:grid;grid-template-columns:1fr 1fr}.workout-secondary-actions button{padding:9px 7px;white-space:normal}.workout-empty{padding:25px 12px}}
+
+/* Editable nutrition workflow — styled with all six themes */
+.nutrition-period{font-size:12px;margin:2px 0 0}
+.nutrition-help{font-size:13px;line-height:1.5;margin:10px 0}
+.nutrition-import-toolbar,.nutrition-footer{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 14px}
+.nutrition-import-toolbar>button{min-height:43px}
+.nutrition-paste-panel{border:1px solid var(--accent-border);border-radius:12px;background:var(--subtle-surface);padding:14px;margin:10px 0 16px}
+.nutrition-paste-panel>label{font-size:13px;font-weight:750;color:var(--ink);display:block;margin-bottom:8px}
+.nutrition-paste-panel textarea{font:12px/1.45 ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--input-bg);color:var(--ink);border:1px solid var(--input-border);min-height:155px;resize:vertical;width:100%;padding:10px}
+.nutrition-paste-panel small{display:block;font-size:12px;line-height:1.5;color:var(--muted);margin-top:10px}
+.nutrition-import-actions{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:10px}
+.nutrition-import-actions button,.file-import-label{min-height:42px;display:inline-flex;align-items:center;justify-content:center}
+.file-import-label{position:relative;cursor:pointer;border-radius:10px;background:var(--surface);border:1px solid var(--accent-border);padding:9px 13px;color:var(--accent-text);font-size:13px;font-weight:750;overflow:hidden}
+.file-import-label input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.file-import-label:focus-within{outline:3px solid var(--accent);outline-offset:2px}
+.nutrition-footer>button{font-size:12px}
+#menu .meal{border:1px solid var(--border-soft);background:var(--subtle-surface)}
+#menu .meal textarea{width:100%;font-size:15px;line-height:1.4;min-height:58px;resize:vertical}
+#menu .meal .meal-label-row{display:flex;align-items:center;justify-content:space-between;gap:8px}
+#menu .meal .meal-label-row button{border:0;padding:4px 7px;background:transparent;color:var(--muted);font-size:11px}
+#menu .meal .meal-label-row button:hover{color:var(--accent-text);background:var(--accent-soft)}
+@media(max-width:600px){.nutrition-import-toolbar{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.nutrition-import-toolbar>button{font-size:12px;padding:9px 6px;min-width:0}.nutrition-import-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.nutrition-import-actions>*:first-child{grid-column:1/-1}.nutrition-import-actions>*{width:100%;text-align:center;padding:9px 6px}.nutrition-footer{gap:7px}.nutrition-footer button{font-size:12px}#menu .meal textarea{font-size:16px}}
 </style></head><body><header><div style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#b3dbc3">TRAINING & NUTRITION</div><h1>Health & Fitness Hub</h1><p>Plan meals, track workouts, and stay consistent.</p></header><main class="wrap"><section class="panel" id="cloud-panel"><div class="sync-bar"><div class="sync-heading"><span class="sync-dot" aria-hidden="true"></span><div><strong>Cloud sync</strong><p class="muted" id="sync-status">Sign in to link your planner to Firebase.</p></div></div><div class="sync-actions"><button class="primary" id="sign-in">Sign in with Google</button><details id="theme-picker" class="theme-picker"><summary aria-label="Choose color theme">◐ Theme</summary><div class="theme-menu"><h3>Appearance</h3><p>Choose your Health & Fitness Hub color theme.</p><div class="theme-grid">
 <button type="button" class="theme-option" data-theme-choice="slate" onclick="chooseFitnessTheme('slate')"><span class="theme-swatch" style="--swatch:#435469"></span>Slate</button>
 <button type="button" class="theme-option" data-theme-choice="ocean" onclick="chooseFitnessTheme('ocean')"><span class="theme-swatch" style="--swatch:#245c9c"></span>Ocean</button>
@@ -270,6 +315,7 @@ input[type=checkbox]{accent-color:var(--accent)}
   <button type="button" class="date-step" onclick="shiftWorkoutDate(1)" aria-label="Next day">&#8250;</button>
   <select id="workout-day" hidden aria-label="Starting template day"></select>
 </div>
+<div id="workout-status" class="workout-status" role="status" aria-live="polite"></div>
 <div class="workout-primary-actions no-print">
   <button class="primary" type="button" onclick="togglePasteWorkout()">Paste workout</button>
   <button type="button" onclick="toggleWorkoutEdit()" id="workout-edit-button">Edit workout</button>
@@ -279,15 +325,39 @@ input[type=checkbox]{accent-color:var(--accent)}
 <div id="workout-template-editor" class="hidden"></div>
 <div id="workout-exercises"></div>
 <div class="workout-notes"><label for="workout-notes">Session notes / feedback</label><textarea id="workout-notes" placeholder="Energy, cardio, progress, adjustments..." oninput="updateWorkoutNotes(this.value)"></textarea></div>
-<div class="workout-bottom-actions no-print"><button onclick="copyWorkoutSummary()">Copy workout for ChatGPT</button></div>
+<div class="workout-bottom-actions no-print">
+  <div class="workout-finish-area">
+    <button type="button" class="primary workout-finish-button" id="workout-finish-button" onclick="toggleFinishedWorkout()">✓ Finish workout</button>
+    <p class="workout-action-help">Save this session as finished—even if you didn't complete every set. Your checked sets and notes stay saved.</p>
+  </div>
+  <div class="workout-secondary-actions">
+    <button type="button" onclick="copyWorkoutSummary()">Copy summary for ChatGPT</button>
+    <button type="button" class="danger workout-remove-button" onclick="removeWorkoutForDate()">Remove workout</button>
+  </div>
+</div>
 </section>
 <section id="history" class="panel tab-panel" hidden><div class="row"><h2>Workout history</h2><span class="tag" id="history-count"></span></div><p class="muted">Open a previous date to review or continue logging. Your recent sessions are synced privately.</p><div id="workout-history"></div></section>
 <section id="schedule" class="panel tab-panel" hidden><h2>Daily routine</h2><table><thead><tr><th>When</th><th>What</th><th>Portion guide</th></tr></thead><tbody><tr><td>Before gym</td><td>Prolific-1 + water; banana if hungry</td><td>Start at ½ scoop; assess tolerance before 1 scoop</td></tr><tr><td>After gym</td><td><b>ISO100 shake + Nutricost creatine</b></td><td>1 scoop protein (25 g) + 3–5 g creatine, water/almond milk</td></tr><tr><td>9 AM</td><td>Light breakfast</td><td>20–30 g protein; ~250–350 kcal</td></tr><tr><td>12–1 PM</td><td>Meal-prepped lunch</td><td>1½–2 palms protein, 1–2 fists carbs, vegetables</td></tr><tr><td>3 PM</td><td>Afternoon snack</td><td>Protein + fruit or crackers</td></tr><tr><td>6–7 PM</td><td>Dinner with fiancée</td><td>1½–2 palms protein, 1–2 fists carbs, vegetables</td></tr><tr><td>Evening</td><td>Optional dessert</td><td>Enjoy a moderate portion</td></tr></tbody></table><p class="muted">On rest days, skip pre-workout; creatine remains daily. Protein shake can be used whenever convenient to help meet protein needs.</p><div class="reference-section"><h3>Portion guide</h3><div class="grid2"><div class="meal"><b>Protein</b><p>1½–2 palms at lunch and dinner (~5–7 oz cooked meat/fish).</p></div><div class="meal"><b>Carbs</b><p>1–2 fists rice, potatoes, pasta, or grains; more on harder training days.</p></div><div class="meal"><b>Vegetables</b><p>1–2 fists at lunch and dinner.</p></div><div class="meal"><b>Fats</b><p>1–2 thumbs added oils, avocado, nuts or dressings; adjust for fatty proteins.</p></div></div></div></section>
-<section id="menu" class="panel tab-panel"><div class="row"><h2>Editable weekly menu</h2><div><button onclick="resetMenu()" class="danger">Reset menu</button></div></div><p class="muted">Tap a day and edit any meal. Changes sync to your private cloud after setup. Post-workout shake is part of your routine, not repeated in each day.</p><div class="daybuttons" id="daybuttons"></div><div id="dayeditor"></div><div class="row no-print"><button onclick="copyMenu()">Copy entire menu</button><button onclick="downloadMenu()">Export menu (.txt)</button></div></section>
+<section id="menu" class="panel tab-panel"><div class="row"><div><h2>Weekly meal plan</h2><p class="nutrition-period muted" id="menu-plan-label">Editable day by day</p></div></div>
+<p class="muted nutrition-help">Import your meal plan from ChatGPT, then tap any breakfast, lunch, snack or dinner to edit it. Changes save automatically. Your post-workout shake stays in Daily routine.</p>
+<div class="nutrition-import-toolbar no-print"><button type="button" class="primary" onclick="toggleNutritionPaste('menu')">Paste meals + groceries</button><button type="button" onclick="copyNutritionForChatGPT()">Copy plan for ChatGPT</button></div>
+<div class="nutrition-paste-panel hidden" id="nutrition-paste-menu">
+<label for="nutrition-text-menu">Paste meal plan and/or grocery JSON</label><textarea id="nutrition-text-menu" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder='{"label":"Nov 17–22","menu":{"Tuesday":["Breakfast","Lunch","Snack","Dinner"]},"groceries":[{"category":"Produce","name":"Bananas","qty":"6"}]}'></textarea>
+<div class="nutrition-import-actions"><button type="button" class="primary" onclick="importPastedNutrition('menu')">Import pasted plan</button><label class="file-import-label">Upload .json file<input type="file" accept=".json,application/json" onchange="importNutritionFile(this,'menu')" aria-label="Upload meal and grocery JSON file"></label><button type="button" onclick="toggleNutritionPaste('menu',false)">Cancel</button></div>
+<small>Only the included sections will change. Imported meal days overwrite those days; imported groceries replace the shopping list and its checkmarks. A confirmation appears first. Workouts are untouched.</small>
+</div>
+<div class="daybuttons" id="daybuttons"></div><div id="dayeditor"></div>
+<div class="nutrition-footer no-print"><button type="button" onclick="copyMenu()">Copy meals as text</button><button type="button" onclick="downloadMenu()">Export meals (.txt)</button><button type="button" class="danger" onclick="resetMenu()">Reset meal plan</button></div></section>
 <section id="groceries" class="panel tab-panel" hidden>
-<div class="row"><h2>Grocery list</h2><span class="tag" id="gcount">0 / 0 checked</span></div>
+<div class="row"><div><h2>Grocery list</h2><p class="nutrition-period muted" id="grocery-plan-label">Shopping list</p></div><span class="tag" id="gcount">0 / 0 checked</span></div>
 <div class="progress"><div id="gbar"></div></div>
-<p class="muted">Add items in one line, check them off while shopping, and tap Edit only when you need to change something. Your changes sync automatically once connected.</p>
+<p class="muted nutrition-help">Check items off in store, edit quantities, or import a new list from ChatGPT. Everything syncs with your account.</p>
+<div class="nutrition-import-toolbar no-print"><button type="button" class="primary" onclick="toggleNutritionPaste('groceries')">Paste grocery list</button><button type="button" onclick="copyGroceriesForChatGPT()">Copy JSON for ChatGPT</button></div>
+<div class="nutrition-paste-panel hidden" id="nutrition-paste-groceries">
+<label for="nutrition-text-groceries">Paste groceries JSON (or full meal + grocery plan)</label><textarea id="nutrition-text-groceries" spellcheck="false" autocapitalize="off" autocomplete="off" placeholder='{"groceries":[{"category":"Produce","name":"Apples","qty":"6"}]}'></textarea>
+<div class="nutrition-import-actions"><button type="button" class="primary" onclick="importPastedNutrition('groceries')">Import grocery list</button><label class="file-import-label">Upload .json file<input type="file" accept=".json,application/json" onchange="importNutritionFile(this,'groceries')" aria-label="Upload grocery JSON file"></label><button type="button" onclick="toggleNutritionPaste('groceries',false)">Cancel</button></div>
+<small>Importing groceries replaces the existing list and resets checked items unless the JSON marks items as checked. You can import meals and groceries together.</small>
+</div>
 <form id="groceryadd" class="quick-add no-print" onsubmit="event.preventDefault();addGrocery()">
 <input id="newGName" placeholder="Add an item (e.g. milk)" aria-label="New grocery item" required>
 <input id="newGQty" placeholder="Quantity (optional)" aria-label="Quantity">
@@ -298,7 +368,7 @@ input[type=checkbox]{accent-color:var(--accent)}
 <div id="grocerygroups"></div>
 <div class="row no-print" style="margin-top:16px"><button onclick="copyGroceries()">Copy list</button><button onclick="downloadGroceries()">Export .txt</button><button class="danger" onclick="resetGroceries()">Reset to original</button></div>
 </section>
-<section id="prep" class="panel tab-panel" hidden><h2>Sunday meal prep · 60–75 minutes</h2><p class="muted">Aim to prep lunches and make weeknight dinners easier, not cook everything in advance.</p><div id="preplist"></div><div class="row no-print"><button onclick="resetPrep()">Reset prep checklist</button></div><div class="reference-section"><h3>Quick lunch portions</h3><div class="cards"><div class="meal"><b>Turkey rice bowl</b><p>6 oz cooked 93% lean turkey + 1 cup cooked rice + 1–2 cups broccoli + sauce.</p><small>~550–650 kcal · 45–50 g protein</small></div><div class="meal"><b>Chicken burrito bowl</b><p>6 oz cooked chicken + ¾ cup rice + ½ cup beans + peppers, salsa, lettuce and avocado.</p><small>~600–700 kcal · 50–60 g protein</small></div><div class="meal"><b>Turkey panini</b><p>2 slices whole-grain bread + 5–6 oz turkey + cheese, spinach, mustard and apple.</p><small>~500–600 kcal · 40–50 g protein</small></div></div></div><p class="notice">Food safety: refrigerate cooked food promptly, use most refrigerated leftovers within 3–4 days, and freeze later portions.</p></section>
+<section id="prep" class="panel tab-panel" hidden><h2>Meal prep checklist</h2><p class="muted">Prep meals for the current plan. Import custom prep tasks alongside your meals and groceries, or edit the steps below.</p><div id="preplist"></div><div class="nutrition-footer no-print"><button type="button" onclick="togglePrepEditor()">Edit prep steps</button><button type="button" onclick="resetPrep()">Uncheck all</button></div><div id="prep-editor" class="nutrition-paste-panel hidden"><label for="prep-editor-text">One step per line</label><textarea id="prep-editor-text" rows="7"></textarea><div class="nutrition-import-actions"><button type="button" class="primary" onclick="savePrepEditor()">Save steps</button><button type="button" onclick="togglePrepEditor(false)">Cancel</button></div><small>Saving new prep steps resets their completion checkmarks, but does not change your meals or groceries.</small></div><div class="reference-section"><h3>Quick lunch portions</h3><div class="cards"><div class="meal"><b>Turkey rice bowl</b><p>6 oz cooked 93% lean turkey + 1 cup cooked rice + 1–2 cups broccoli + sauce.</p><small>~550–650 kcal · 45–50 g protein</small></div><div class="meal"><b>Chicken burrito bowl</b><p>6 oz cooked chicken + ¾ cup rice + ½ cup beans + peppers, salsa, lettuce and avocado.</p><small>~600–700 kcal · 50–60 g protein</small></div><div class="meal"><b>Turkey panini</b><p>2 slices whole-grain bread + 5–6 oz turkey + cheese, spinach, mustard and apple.</p><small>~500–600 kcal · 40–50 g protein</small></div></div></div><p class="notice">Food safety: chill cooked meals promptly, refrigerate for up to 3–4 days, and freeze portions meant for later in the week. Reheat thoroughly.</p></section>
 </div></main><script>
 const FITNESS_THEMES=['slate','ocean','indigo','clay','forest','midnight'];
 const THEME_KEY='fitness-hub-theme-v2';
@@ -349,9 +419,120 @@ const KEY='wedding-meal-planner-v1';const initialMenu={Monday:['Greek yogurt + b
 const groups={'Protein and dairy':[['93% lean ground turkey','2 lb'],['Chicken breast','2 lb'],['Sirloin steaks','2'],['Salmon fillets','2'],['Lean ground beef','1 lb'],['Turkey deli slices','1 pack'],['Cheese','1 pack'],['Eggs','1 dozen'],['Egg whites','1 carton'],['Plain Greek yogurt','Large tub'],['Cottage cheese','1 tub']], 'Carbs and produce':[['Rice','1 bag'],['Whole-grain bread','1 loaf'],['Tortillas','1 pack'],['Pasta + marinara','1 each'],['Potatoes + sweet potatoes','As needed'],['Broccoli + asparagus','As needed'],['Peppers + onions + spinach','As needed'],['Bananas + berries + apples','As needed'],['Black beans + edamame','1 each']],Extras:[['Kodiak mix','1 box'],['Avocados','2'],['Salsa + seasonings','As needed'],['Olive oil','Check pantry'],['Honey + chocolate chips','Check pantry'],['PB Fit','Optional'],['Dymatize ISO100','Check supply'],['Nutricost creatine','Check supply']]};
 const prepSteps=['Cook 1.5–2 lb lean ground turkey and season for lunches.','Cook 1–1.5 lb chicken for Thursday and Friday lunches.','Prepare 3–4 cups cooked rice and roast potatoes if desired.','Roast broccoli and peppers; wash greens and berries.','Assemble three turkey rice bowls; refrigerate or freeze later portions.','Portion yogurt and fruit; keep eggs, bread and ISO100 ready.','Agree on five home-cooked dinners and leave 1–2 nights flexible.'];
 const clone=x=>JSON.parse(JSON.stringify(x));const defaultState=()=>({menu:clone(initialMenu),groceries:Object.entries(groups).flatMap(([category,items])=>items.map(([name,qty])=>({id:crypto.randomUUID(),category,name,qty,checked:false}))),prep:[],progress:[]});let state;try{state={...defaultState(),...JSON.parse(localStorage.getItem(KEY)||'{}')}}catch{state=defaultState()}const weekdays=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];let activeDay=weekdays[(new Date().getDay()+6)%7];const save=()=>{localStorage.setItem(KEY,JSON.stringify(state));if(window.cloudSave)window.cloudSave(clone(state));};const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));const go=id=>document.getElementById(id).scrollIntoView({behavior:'smooth'});const download=(name,content)=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([content],{type:'text/plain'}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)};const copy=t=>navigator.clipboard?.writeText(t).then(()=>alert('Copied to clipboard')).catch(()=>prompt('Copy this:',t));
-function renderMenu(){document.getElementById('daybuttons').innerHTML=weekdays.filter(d=>Array.isArray(state.menu[d])).map(d=>`<button class="${activeDay===d?'active':''}" onclick="activeDay='${d}';renderMenu();document.querySelector('#daybuttons button.active')?.scrollIntoView({block:'nearest',inline:'nearest',behavior:'smooth'})">${d.slice(0,3)}</button>`).join('');document.getElementById('dayeditor').innerHTML=['Breakfast','Lunch','Afternoon snack','Dinner for two'].map((label,i)=>`<div class="meal"><label>${label}</label><textarea data-meal="${i}">${esc(state.menu[activeDay][i])}</textarea></div>`).join('');document.querySelectorAll('[data-meal]').forEach(el=>el.addEventListener('input',()=>{state.menu[activeDay][+el.dataset.meal]=el.value;save()}))}function resetMenu(){if(confirm('Reset all weekly menu edits?')){state.menu=clone(initialMenu);save();renderMenu()}}function menuText(){return Object.entries(state.menu).map(([d,m])=>`${d}\nBreakfast: ${m[0]}\nLunch: ${m[1]}\nSnack: ${m[2]}\nDinner: ${m[3]}`).join('\n\n')}function copyMenu(){copy(menuText())}function downloadMenu(){download('meal-planner-menu.txt',menuText())}
+function renderMenu(){
+ document.getElementById('menu-plan-label').textContent=state.nutritionLabel||'Editable day by day';
+ document.getElementById('daybuttons').innerHTML=weekdays.filter(d=>Array.isArray(state.menu[d])).map(d=>`<button class="${activeDay===d?'active':''}" onclick="activeDay='${d}';renderMenu();document.querySelector('#daybuttons button.active')?.scrollIntoView({block:'nearest',inline:'nearest',behavior:'smooth'})">${d.slice(0,3)}</button>`).join('');
+ document.getElementById('dayeditor').innerHTML=['Breakfast','Lunch','Afternoon snack','Dinner for two'].map((label,i)=>`<div class="meal"><div class="meal-label-row"><label for="meal-${i}">${label}</label><button type="button" aria-label="Clear ${label}" onclick="clearMeal(${i})">Clear</button></div><textarea id="meal-${i}" data-meal="${i}" aria-label="${label} for ${activeDay}">${esc(state.menu[activeDay][i])}</textarea></div>`).join('');
+ document.querySelectorAll('[data-meal]').forEach(el=>el.addEventListener('input',()=>{state.menu[activeDay][+el.dataset.meal]=el.value;save()}));
+}
+function clearMeal(index){state.menu[activeDay][index]='';save();renderMenu();document.getElementById('meal-'+index)?.focus()}
+function resetMenu(){if(confirm('Reset all weekly menu edits?')){state.menu=clone(initialMenu);save();renderMenu()}}function menuText(){return Object.entries(state.menu).map(([d,m])=>`${d}\nBreakfast: ${m[0]}\nLunch: ${m[1]}\nSnack: ${m[2]}\nDinner: ${m[3]}`).join('\n\n')}function copyMenu(){copy(menuText())}function downloadMenu(){download('meal-planner-menu.txt',menuText())}
+
+/* Paste or upload JSON from ChatGPT to change menu days, groceries, and optional prep steps. */
+function toggleNutritionPaste(section,force){
+ if(!['menu','groceries'].includes(section))return;
+ const el=document.getElementById('nutrition-paste-'+section);
+ const show=typeof force==='boolean'?force:el.classList.contains('hidden');
+ el.classList.toggle('hidden',!show);
+ if(show)document.getElementById('nutrition-text-'+section).focus();
+}
+function parseNutritionJSON(text){
+ let content=String(text||'').trim();
+ const fence=content.match(/^```(?:json)?\s*([\s\S]*?)\s*```$/i);
+ if(fence)content=fence[1];
+ if(content.length>120000)throw Error('Plan is too large. Keep the JSON under 120 KB.');
+ return JSON.parse(content);
+}
+function validateNutritionPlan(data){
+ if(!data||Array.isArray(data)||typeof data!=='object')throw Error('Expected a JSON object with menu and/or groceries.');
+ const result={};let changed=false;
+ if(data.label!==undefined){if(typeof data.label!=='string'||data.label.length>100)throw Error('label must be text under 100 characters');result.label=data.label.trim()}
+ if(data.menu!==undefined){
+  if(!data.menu||Array.isArray(data.menu)||typeof data.menu!=='object')throw Error('menu must be an object keyed by weekday');
+  const entries=Object.entries(data.menu);if(!entries.length||entries.length>7)throw Error('menu needs 1–7 weekdays');
+  result.menu={};
+  for(const [day,meals] of entries){
+   if(!weekdays.includes(day))throw Error('Invalid weekday: '+day);
+   let arr=meals;
+   if(!Array.isArray(arr)&&arr&&typeof arr==='object')arr=[arr.breakfast,arr.lunch,arr.snack,arr.dinner];
+   if(!Array.isArray(arr)||arr.length!==4||arr.some(x=>typeof x!=='string'||x.length>400))throw Error(day+' needs exactly 4 text meals: breakfast, lunch, snack, dinner');
+   result.menu[day]=arr.map(x=>x.trim());
+  }
+  changed=true;
+ }
+ if(data.groceries!==undefined){
+  if(!Array.isArray(data.groceries)||data.groceries.length>150)throw Error('groceries must be a list of up to 150 items');
+  const seen=new Set();
+  result.groceries=data.groceries.map((g,i)=>{
+   if(!g||typeof g!=='object'||Array.isArray(g))throw Error('Invalid grocery at position '+(i+1));
+   if(typeof g.name!=='string'||!g.name.trim()||g.name.length>120)throw Error('Grocery '+(i+1)+' needs a valid name (up to 120 characters)');
+   const category=typeof g.category==='string'&&g.category.trim()?g.category.trim():'Other';
+   const qty=g.qty===undefined?'':String(g.qty).trim();
+   if(category.length>60||qty.length>100)throw Error('Grocery category or quantity is too long');
+   const key=(category+'|'+g.name).toLocaleLowerCase();if(seen.has(key))throw Error('Duplicate grocery: '+g.name);seen.add(key);
+   return {id:crypto.randomUUID(),name:g.name.trim(),category,qty,checked:g.checked===true};
+  });
+  changed=true;
+ }
+ if(data.prepTasks!==undefined){
+  if(!Array.isArray(data.prepTasks)||data.prepTasks.length>30||data.prepTasks.some(x=>typeof x!=='string'||!x.trim()||x.length>240))throw Error('prepTasks must be up to 30 nonempty text steps');
+  result.prepTasks=data.prepTasks.map(x=>x.trim());changed=true;
+ }
+ if(!changed)throw Error('Include a menu, groceries, or prepTasks section.');
+ return result;
+}
+function applyNutritionPlan(raw){
+ const data=validateNutritionPlan(raw);
+ const parts=[];
+ if(data.menu)parts.push('update '+Object.keys(data.menu).length+' meal-plan days (other days unchanged)');
+ if(data.groceries)parts.push('replace grocery list with '+data.groceries.length+' items (current checkmarks are cleared)');
+ if(data.prepTasks)parts.push('replace '+data.prepTasks.length+' prep steps (resets prep checkmarks)');
+ if(!confirm('Import plan?\n\nThis will '+parts.join(', and ')+'.\n\nExisting workouts and workout checkmarks will not change.'))return false;
+ if(data.menu)state.menu={...state.menu,...data.menu};
+ if(data.groceries){state.groceries=data.groceries;editingGrocery=null;document.getElementById('hidePurchased').checked=false}
+ if(data.prepTasks){state.prepTasks=data.prepTasks;state.prep=[]}
+ if(data.label!==undefined)state.nutritionLabel=data.label;
+ save();renderMenu();renderGroceries();renderPrep();
+ return true;
+}
+function importPastedNutrition(section){
+ try{
+  const el=document.getElementById('nutrition-text-'+section);
+  if(applyNutritionPlan(parseNutritionJSON(el.value))){el.value='';toggleNutritionPaste(section,false);alert('Meal and grocery plan saved. You can edit everything directly in the Hub.');}
+ }catch(e){alert('Could not import nutrition plan: '+e.message)}
+}
+async function importNutritionFile(input,section){
+ const file=input.files?.[0];input.value='';if(!file)return;
+ try{
+  if(file.size>120000)throw Error('File must be under 120 KB');
+  if(applyNutritionPlan(parseNutritionJSON(await file.text()))){toggleNutritionPaste(section,false);alert('Meal and grocery plan imported.');}
+ }catch(e){alert('Could not import JSON file: '+e.message)}
+}
+function copyNutritionForChatGPT(){
+ const payload={label:state.nutritionLabel||'My current meal plan',menu:state.menu,groceries:state.groceries.map(({name,category,qty,checked})=>({category,name,qty,checked})),prepTasks:state.prepTasks||prepSteps};
+ copy(JSON.stringify(payload,null,2));
+}
+function copyGroceriesForChatGPT(){copy(JSON.stringify({label:state.nutritionLabel||'My groceries',groceries:state.groceries.map(({category,name,qty,checked})=>({category,name,qty,checked}))},null,2))}
+function refreshGroceryCategories(){
+ const select=document.getElementById('newGCat');if(!select)return;
+ const current=select.value;
+ const categories=[...new Set(['Meat & seafood','Dairy & eggs','Produce','Bread & grains','Canned & frozen','Pantry & condiments',...state.groceries.map(x=>x.category),'Other'])];
+ select.innerHTML=categories.map(cat=>`<option value="${esc(cat)}" ${current===cat?'selected':''}>${esc(cat)}</option>`).join('');
+ if(categories.includes(current))select.value=current;
+}
+function togglePrepEditor(force){
+ const panel=document.getElementById('prep-editor');const show=typeof force==='boolean'?force:panel.classList.contains('hidden');panel.classList.toggle('hidden',!show);
+ if(show){document.getElementById('prep-editor-text').value=(state.prepTasks||prepSteps).join('\n');document.getElementById('prep-editor-text').focus()}
+}
+function savePrepEditor(){
+ const items=document.getElementById('prep-editor-text').value.split(/\r?\n/).map(x=>x.trim()).filter(Boolean);
+ if(!items.length||items.length>30||items.some(x=>x.length>240)){alert('Enter between 1 and 30 steps, up to 240 characters each');return}
+ if(!confirm('Save '+items.length+' prep tasks? Existing completed prep checkmarks will reset.'))return;
+ state.prepTasks=items;state.prep=[];save();renderPrep();togglePrepEditor(false);
+}
+
 let editingGrocery=null;
-function renderGroceries(){const closedGroups=new Set([...document.querySelectorAll(".grocery-group:not([open])")].map(x=>x.dataset.group));
+function renderGroceries(){document.getElementById('grocery-plan-label').textContent=state.nutritionLabel||'Shopping list';refreshGroceryCategories();const closedGroups=new Set([...document.querySelectorAll(".grocery-group:not([open])")].map(x=>x.dataset.group));
  const hide=document.getElementById('hidePurchased').checked;
  const categories=[...new Set(state.groceries.map(g=>g.category))];
  document.getElementById('grocerygroups').innerHTML=categories.map(cat=>{
@@ -392,7 +573,7 @@ function addGrocery(){
 }
 function removeChecked(){const n=state.groceries.filter(g=>g.checked).length;if(n&&confirm(`Remove ${n} checked items from your list?`)){state.groceries=state.groceries.filter(g=>!g.checked);save();renderGroceries()}}
 function groceryText(){return [...new Set(state.groceries.map(g=>g.category))].map(cat=>cat+'\n'+state.groceries.filter(g=>g.category===cat).map(g=>(g.checked?'[x] ':'[ ] ')+g.name+' — '+g.qty).join('\n')).join('\n\n')}function copyGroceries(){copy(groceryText())}function downloadGroceries(){download('meal-planner-groceries.txt',groceryText())}function clearChecks(){state.groceries.forEach(g=>g.checked=false);save();renderGroceries()}function resetGroceries(){if(confirm('Reset all grocery list changes?')){state.groceries=defaultState().groceries;save();renderGroceries()}}
-function renderPrep(){document.getElementById('preplist').innerHTML=prepSteps.map((s,i)=>`<label class="grocery ${state.prep.includes(i)?'checked':''}"><input type="checkbox" data-step="${i}" ${state.prep.includes(i)?'checked':''}><span>${esc(s)}</span></label>`).join('');document.querySelectorAll('[data-step]').forEach(el=>el.onchange=()=>{const i=+el.dataset.step;state.prep=el.checked?[...state.prep,i]:state.prep.filter(x=>x!==i);save();renderPrep()})}function resetPrep(){state.prep=[];save();renderPrep()}
+function renderPrep(){document.getElementById('preplist').innerHTML=(state.prepTasks||prepSteps).map((s,i)=>`<label class="grocery ${state.prep.includes(i)?'checked':''}"><input type="checkbox" data-step="${i}" ${state.prep.includes(i)?'checked':''}><span>${esc(s)}</span></label>`).join('');document.querySelectorAll('[data-step]').forEach(el=>el.onchange=()=>{const i=+el.dataset.step;state.prep=el.checked?[...state.prep,i]:state.prep.filter(x=>x!==i);save();renderPrep()})}function resetPrep(){state.prep=[];save();renderPrep()}
 // Workout plans are editable templates; each date gets its own log.
 const workoutDays=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
 const starterWorkouts={
@@ -427,17 +608,39 @@ const starterWorkouts={
 };
 const makeWorkoutTemplates=()=>Object.fromEntries(Object.entries(starterWorkouts).map(([day,v])=>[day,{title:v.title,exercises:v.exercises.map(([name,sets,reps,rest,block])=>({id:crypto.randomUUID(),name,sets:+sets,reps,rest,block}))}]));
 function dailyTemplate(day){const t=state.workoutTemplates?.[day];const legacy=t&&((t.title==='Upper body A'&&day==='Monday')||(t.title==='Upper body B'&&day==='Thursday')||(t.title==='Lower body B'&&day==='Friday')||(t.title==='Lower body A'&&day==='Tuesday'));return (!t||legacy)?makeWorkoutTemplates()[day]:t;}
-function ensureWorkoutState(){if(!state.workoutTemplates||typeof state.workoutTemplates!=='object')state.workoutTemplates=makeWorkoutTemplates();if(!state.workoutLogs||typeof state.workoutLogs!=='object')state.workoutLogs={};}
+function ensureWorkoutState(){if(!state.workoutTemplates||typeof state.workoutTemplates!=='object')state.workoutTemplates=makeWorkoutTemplates();if(!state.workoutLogs||typeof state.workoutLogs!=='object')state.workoutLogs={};if(!state.workoutRemovedDates||typeof state.workoutRemovedDates!=='object'||Array.isArray(state.workoutRemovedDates))state.workoutRemovedDates={};}
 const localDate=()=>{const d=new Date();return [d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-')};
 let workoutDate=localDate(),editingWorkout=false;
 const dayForDate=date=>{const d=new Date(date+'T12:00:00');return workoutDays[(d.getDay()+6)%7]};
-function getWorkoutLog(){ensureWorkoutState();if(!state.workoutLogs[workoutDate]){const day=dayForDate(workoutDate);const template=dailyTemplate(day);state.workoutLogs[workoutDate]={day,notes:'',sets:{},title:template.title,exercises:clone(template.exercises)}}const log=state.workoutLogs[workoutDate];if(!Array.isArray(log.exercises)){const t=state.workoutTemplates[log.day]||state.workoutTemplates[dayForDate(workoutDate)];log.title=t.title;log.exercises=clone(t.exercises)}return log}
+function getWorkoutLog(){ensureWorkoutState();if(state.workoutRemovedDates[workoutDate])return null;if(!state.workoutLogs[workoutDate]){const day=dayForDate(workoutDate);const template=dailyTemplate(day);state.workoutLogs[workoutDate]={day,notes:'',sets:{},title:template.title,exercises:clone(template.exercises)}}const log=state.workoutLogs[workoutDate];if(!Array.isArray(log.exercises)){const t=state.workoutTemplates[log.day]||state.workoutTemplates[dayForDate(workoutDate)];log.title=t.title;log.exercises=clone(t.exercises)}return log}
 function workoutPlan(){return getWorkoutLog()}
 function selectWorkoutDate(value){if(!/^\d{4}-\d{2}-\d{2}$/.test(value))return;workoutDate=value;editingWorkout=false;renderWorkouts()}
 function formatWorkoutDate(value){const d=new Date(value+'T12:00:00');return Number.isNaN(d.getTime())?value:new Intl.DateTimeFormat('en-US',{weekday:'short',month:'short',day:'numeric',year:'numeric'}).format(d)}
 function shiftWorkoutDate(days){const d=new Date(workoutDate+'T12:00:00');d.setDate(d.getDate()+days);selectWorkoutDate([d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-'))}
 function selectWorkoutDay(day){if(!workoutDays.includes(day))return;const log=getWorkoutLog();log.day=day;save();renderWorkouts()}
-function toggleWorkoutEdit(){editingWorkout=!editingWorkout;renderWorkouts()}
+function toggleFinishedWorkout(){
+ const log=getWorkoutLog();if(!log)return;
+ if(log.status==='finished'){
+  delete log.status;delete log.finishedAt;save();renderWorkouts();renderWorkoutHistory();return;
+ }
+ const checked=(log.exercises||[]).reduce((sum,ex)=>sum+Array.from({length:ex.sets},(_,i)=>!!log.sets?.[ex.id]?.[i]?.done).filter(Boolean).length,0);
+ if(checked===0&&!confirm('No sets have been checked off. Finish this workout anyway?'))return;
+ log.status='finished';log.finishedAt=new Date().toISOString();
+ save();editingWorkout=false;renderWorkouts();renderWorkoutHistory();
+}
+function removeWorkoutForDate(){
+ const log=getWorkoutLog();if(!log)return;
+ const label=formatWorkoutDate(workoutDate);
+ if(!confirm('Remove the workout for '+label+'?\n\nThis deletes its exercise plan, checked sets, and session notes from your tracker and history. You can paste a new workout or restore the regular daily template later.'))return;
+ ensureWorkoutState();delete state.workoutLogs[workoutDate];state.workoutRemovedDates[workoutDate]=true;
+ save();editingWorkout=false;togglePasteWorkout(false);renderWorkouts();renderWorkoutHistory();
+}
+function restoreWorkoutForDate(){
+ ensureWorkoutState();if(!state.workoutRemovedDates[workoutDate])return;
+ delete state.workoutRemovedDates[workoutDate];
+ getWorkoutLog();save();editingWorkout=false;renderWorkouts();renderWorkoutHistory();
+}
+function toggleWorkoutEdit(){if(!getWorkoutLog())return;editingWorkout=!editingWorkout;renderWorkouts()}
 function updateWorkoutTitle(value){getWorkoutLog().title=value;save();document.getElementById('workout-heading').textContent=value}
 function updateExercise(id,field,value){const log=getWorkoutLog(),ex=log.exercises.find(x=>x.id===id);if(!ex)return;ex[field]=field==='sets'?Math.max(1,Math.min(20,Number(value)||1)):value;save();if(field==='sets'||field==='block')renderWorkouts()}
 function addWorkoutExercise(){getWorkoutLog().exercises.push({id:crypto.randomUUID(),name:'New exercise',sets:3,reps:'8–12',rest:'60 sec',block:'Lift'});save();renderWorkouts()}
@@ -453,20 +656,40 @@ function applyImportedWorkout(data){
  const exercises=data.exercises.map((e,i)=>{if(!e||typeof e.name!=='string'||!e.name.trim()||e.name.length>120)throw Error('Invalid exercise name at '+(i+1));const sets=Number(e.sets);if(!Number.isInteger(sets)||sets<1||sets>20)throw Error('Sets must be 1–20 for '+e.name);return {id:crypto.randomUUID(),name:e.name.trim(),sets,reps:String(e.reps??'').slice(0,80),rest:String(e.rest??'').slice(0,80),block:allowed.includes(e.block)?e.block:'Lift'}});
  const date=data.date||workoutDate;
  if(!confirm('Import "'+String(data.title||'Workout').slice(0,80)+'" for '+date+'? This replaces that date’s plan and logged sets.'))return false;
- workoutDate=date;const log=getWorkoutLog();log.title=String(data.title||'Custom workout').slice(0,120);log.exercises=exercises;log.sets={};log.notes=String(data.notes||'').slice(0,2000);save();editingWorkout=false;showTab('workouts');renderWorkouts();return true;
+ workoutDate=date;ensureWorkoutState();delete state.workoutRemovedDates[date];const log=getWorkoutLog();log.title=String(data.title||'Custom workout').slice(0,120);log.exercises=exercises;log.sets={};log.notes=String(data.notes||'').slice(0,2000);delete log.status;delete log.finishedAt;save();editingWorkout=false;showTab('workouts');renderWorkouts();renderWorkoutHistory();return true;
 }
 function importPastedWorkout(){try{const data=parseWorkoutText(document.getElementById('workout-paste-text').value);if(applyImportedWorkout(data)){document.getElementById('workout-paste-text').value='';togglePasteWorkout(false);alert('Workout imported and saved to your planner.')}}catch(e){alert('Could not import workout: '+e.message)}}
 async function importWorkoutFile(input){const file=input.files?.[0];input.value='';if(!file)return;try{if(file.size>100000)throw Error('File is too large');if(applyImportedWorkout(parseWorkoutText(await file.text())))alert('Workout imported and saved.')}catch(e){alert('Could not import workout: '+e.message)}}
 
 function updateWorkoutSet(id,index,field,value){const log=getWorkoutLog();if(!log.sets[id])log.sets[id]=[];if(!log.sets[id][index])log.sets[id][index]={done:false};log.sets[id][index][field]=value;save();renderWorkoutCount();const btn=document.querySelector(`[data-set-exercise="${id}"][data-set-index="${index}"]`);if(btn){btn.classList.toggle('completed',!!value);btn.setAttribute('aria-pressed',String(!!value));btn.querySelector('.set-status').textContent=value?'✓':'';btn.setAttribute('aria-label',(value?'Uncheck':'Complete')+' set '+(index+1));}}
 function updateWorkoutNotes(value){getWorkoutLog().notes=value;save()}
-function renderWorkoutCount(){const log=getWorkoutLog();let total=0,done=0;const byBlock={};for(const ex of log.exercises){const group=byBlock[ex.block]||(byBlock[ex.block]={done:0,total:0});for(let i=0;i<ex.sets;i++){total++;group.total++;if(log.sets[ex.id]?.[i]?.done){done++;group.done++}}}document.getElementById('workout-count').textContent=`${done} / ${total} sets`;const pct=total?Math.round(100*done/total):0;document.getElementById('workout-progress-fill').style.width=pct+'%';document.querySelector('.workout-progress-track').setAttribute('aria-valuenow',String(pct));for(const el of document.querySelectorAll('[data-block-progress]')){const group=byBlock[el.dataset.blockProgress]||{done:0,total:0};el.textContent=`${group.done}/${group.total} sets`}}
+function renderWorkoutCount(){const log=getWorkoutLog();let total=0,done=0;const byBlock={};for(const ex of log.exercises){const group=byBlock[ex.block]||(byBlock[ex.block]={done:0,total:0});for(let i=0;i<ex.sets;i++){total++;group.total++;if(log.sets[ex.id]?.[i]?.done){done++;group.done++}}}document.getElementById('workout-count').textContent=`${done} / ${total} sets`;const finished=log.status==='finished';const statusEl=document.getElementById('workout-status');
+ statusEl.classList.toggle('is-finished',finished);
+ statusEl.innerHTML='<span class="workout-status-dot" aria-hidden="true"></span><span>'+ (finished?'Finished · '+done+' of '+total+' sets checked':done>0?'In progress · '+done+' of '+total+' sets checked':'Planned · ready when you are') +'</span>';
+ const finishBtn=document.getElementById('workout-finish-button');finishBtn.textContent=finished?'↶ Reopen workout':'✓ Finish workout';finishBtn.classList.toggle('primary',!finished);finishBtn.classList.toggle('is-reopen',finished);
+ const help=document.querySelector('.workout-action-help');help.textContent=finished?'Workout saved as finished. Reopen it to continue the session or adjust completed sets.':'Save this session as finished—even if you didn’t complete every set. Checked sets and notes are preserved.';
+ const pct=total?Math.round(100*done/total):0;document.getElementById('workout-progress-fill').style.width=pct+'%';document.querySelector('.workout-progress-track').setAttribute('aria-valuenow',String(pct));for(const el of document.querySelectorAll('[data-block-progress]')){const group=byBlock[el.dataset.blockProgress]||{done:0,total:0};el.textContent=`${group.done}/${group.total} sets`}}
 function renderWorkouts(){
  const closedBlocks=new Set([...document.querySelectorAll('.workout-group:not([open])')].map(x=>x.dataset.block));
  ensureWorkoutState();
  document.getElementById('workout-date').value=workoutDate;
  document.getElementById('workout-date-display').textContent=formatWorkoutDate(workoutDate);
  const log=getWorkoutLog(),template=log;
+ const section=document.getElementById('workouts');section.classList.toggle('workout-removed',!log);
+ if(!log){
+  editingWorkout=false;
+  document.getElementById('workout-heading').textContent='No workout scheduled';
+  document.getElementById('workout-count').textContent='Cleared';
+  document.getElementById('workout-status').innerHTML='<span class="workout-status-dot" aria-hidden="true"></span><span>This date has no workout</span>';
+  document.getElementById('workout-status').classList.remove('is-finished');
+  document.getElementById('workout-template-editor').classList.add('hidden');
+  document.getElementById('workout-template-editor').innerHTML='';
+  document.getElementById('workout-exercises').innerHTML='<div class="workout-empty" role="status"><div class="workout-empty-symbol" aria-hidden="true">○</div><h3>No workout on this date</h3><p>This workout was removed. It won’t reappear when you revisit the date. You can paste another workout above or restore the regular '+esc(dayForDate(workoutDate))+' plan.</p><button type="button" onclick="restoreWorkoutForDate()">Restore regular '+esc(dayForDate(workoutDate))+' workout</button></div>';
+  document.getElementById('workout-notes').value='';
+  document.getElementById('workout-progress-fill').style.width='0%';
+  document.querySelector('.workout-progress-track').setAttribute('aria-valuenow','0');
+  return;
+ }
  const select=document.getElementById('workout-day');
  select.innerHTML=workoutDays.map(d=>`<option value="${d}" ${d===log.day?'selected':''}>${d}</option>`).join('');
  document.getElementById('workout-heading').textContent=template.title;
@@ -483,8 +706,8 @@ function renderWorkouts(){
  document.getElementById('workout-notes').value=log.notes||'';
  renderWorkoutCount();
 }
-function renderWorkoutHistory(){ensureWorkoutState();const rows=Object.entries(state.workoutLogs).sort(([a],[b])=>b.localeCompare(a)).slice(0,90);const logged=rows.filter(([date,log])=>log.exercises?.some(ex=>Array.from({length:ex.sets},(_,i)=>!!log.sets?.[ex.id]?.[i]?.done).some(Boolean))).length;document.getElementById('history-count').textContent=`${logged} started · ${rows.length} dates`;document.getElementById('workout-history').innerHTML=rows.length?rows.map(([date,log])=>{const total=(log.exercises||[]).reduce((n,e)=>n+(Number(e.sets)||0),0);const done=(log.exercises||[]).reduce((n,e)=>n+Array.from({length:Number(e.sets)||0},(_,i)=>!!log.sets?.[e.id]?.[i]?.done).filter(Boolean).length,0);const percent=total?Math.round(100*done/total):0;const label=done===0?'Planned':percent===100?'Complete':'In progress';return `<button class="history-row" onclick="selectWorkoutDate('${date}');showTab('workouts')"><span class="history-main"><strong>${esc(formatWorkoutDate(date))}</strong><small>${esc(log.title||log.day)} · ${done}/${total} sets</small><span class="history-progress"><span style="width:${percent}%"></span></span></span><span class="history-trailing">${label} →</span></button>`}).join(''):'<p class="muted">Your planned and completed workouts will appear here.</p>'}
-function copyWorkoutSummary(){const log=getWorkoutLog(),lines=[`Workout ${workoutDate} — ${log.title}`];for(const ex of log.exercises){const completed=Array.from({length:ex.sets},(_,i)=>!!log.sets[ex.id]?.[i]?.done).filter(Boolean).length;lines.push(`${ex.block}: ${ex.name} — ${completed}/${ex.sets} sets completed (target ${ex.reps}, rest ${ex.rest})`)}lines.push('Notes: '+(log.notes||'None'));copy(lines.join('\n'))}
+function renderWorkoutHistory(){ensureWorkoutState();const rows=Object.entries(state.workoutLogs).filter(([date])=>!state.workoutRemovedDates[date]).sort(([a],[b])=>b.localeCompare(a)).slice(0,90);const logged=rows.filter(([date,log])=>log.exercises?.some(ex=>Array.from({length:ex.sets},(_,i)=>!!log.sets?.[ex.id]?.[i]?.done).some(Boolean))).length;document.getElementById('history-count').textContent=`${logged} started · ${rows.length} dates`;document.getElementById('workout-history').innerHTML=rows.length?rows.map(([date,log])=>{const total=(log.exercises||[]).reduce((n,e)=>n+(Number(e.sets)||0),0);const done=(log.exercises||[]).reduce((n,e)=>n+Array.from({length:Number(e.sets)||0},(_,i)=>!!log.sets?.[e.id]?.[i]?.done).filter(Boolean).length,0);const percent=total?Math.round(100*done/total):0;const label=log.status==='finished'?'Finished':done===0?'Planned':percent===100?'All sets checked':'In progress';return `<button class="history-row" onclick="selectWorkoutDate('${date}');showTab('workouts')"><span class="history-main"><strong>${esc(formatWorkoutDate(date))}</strong><small>${esc(log.title||log.day)} · ${done}/${total} sets</small><span class="history-progress"><span style="width:${percent}%"></span></span></span><span class="history-trailing">${label} →</span></button>`}).join(''):'<p class="muted">Your planned and completed workouts will appear here.</p>'}
+function copyWorkoutSummary(){const log=getWorkoutLog();if(!log)return;const lines=[`Workout ${workoutDate} — ${log.title}`,`Status: ${log.status==='finished'?'Finished':'Not yet finished'}`];for(const ex of log.exercises){const completed=Array.from({length:ex.sets},(_,i)=>!!log.sets[ex.id]?.[i]?.done).filter(Boolean).length;lines.push(`${ex.block}: ${ex.name} — ${completed}/${ex.sets} sets completed (target ${ex.reps}, rest ${ex.rest})`)}lines.push('Notes: '+(log.notes||'None'));copy(lines.join('\n'))}
 ensureWorkoutState();
 window.getLocalPlanner=()=>clone(state);window.applyCloudPlanner=remote=>{state=clone(remote);ensureWorkoutState();if(FITNESS_THEMES.includes(state.preferences?.theme))applyFitnessTheme(state.preferences.theme);localStorage.setItem(KEY,JSON.stringify(state));window.renderPlanner()};window.renderPlanner=()=>{renderMenu();renderGroceries();renderPrep();renderWorkouts();renderWorkoutHistory()};renderPlanner();let initialHubTab='workouts';try{initialHubTab=sessionStorage.getItem('meal-planner-tab')||'workouts'}catch(e){}showTab(initialHubTab);
 </script><script type="module">
